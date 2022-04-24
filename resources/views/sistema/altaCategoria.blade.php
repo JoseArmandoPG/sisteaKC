@@ -8,14 +8,14 @@
             {{csrf_field()}}
             <div class="row">
                 <div class="col-lg-6">
-                    @if($errors->first('idCategoriast'))
-                        <i>{{$errors->first('idCategoriast')}}</i>
+                    @if($errors->first('idCat'))
+                        <i>{{$errors->first('idCat')}}</i>
                     @endif
                     <div class="form-group">
                         <label for="exampleInputname">Clave Categoria</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-key"></i></div>
-                            <input type="text" name="idCategoriast" id="idCategoriast" class="form-control" value="{{$idCategoriast}}" readonly="readonly">
+                            <input type="text" name="idCat" id="idCat" class="form-control" value="{{$idest}}" readonly="readonly">
                         </div>
                     </div>
                 </div>

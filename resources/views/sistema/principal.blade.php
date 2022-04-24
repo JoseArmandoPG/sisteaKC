@@ -1,4 +1,4 @@
-@if (Session::get('sesionidU')!="")
+@if (Session::get('sesionidUsu')!="")
 @else
     {{Session::flash('ERROR','ES NECESARIO LOGUEARSE ANTES DE CONTINUAR')}}
     <script>window.location.replace("{{url('login')}}")</script>
@@ -264,9 +264,9 @@
                         <li class="nav-label">Modulos</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Altas</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{URL::action('categoriaController@altaCategoria')}}">Producto</a></li>
+                                <li><a href="">Producto</a></li>
                                 <li><a href="email-read.html">Venta</a></li>
-                                <li><a href="email-inbox.html">Categoria</a></li>
+                                <li><a href="{{URL::action('categoriaController@altaCategoria')}}">Categoria</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Graficas</span></a>
