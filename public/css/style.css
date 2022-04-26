@@ -5390,7 +5390,8 @@ label {
   border-radius: 3px;
 }
 thead tr th {
-  color: #455a64;
+  /* color: #455a64; */
+  color: #000;
   font-weight: 500;
 }
 thead tr th:last-child {
@@ -5403,7 +5404,8 @@ tbody tr th {
 }
 tbody tr td {
   font-family: 'Poppins', sans-serif;
-  color: #99abb4;
+  /* color: #99abb4; */
+  color: #000;
 }
 tbody tr td:last-child {
   text-align: right;

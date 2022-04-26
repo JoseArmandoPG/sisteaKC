@@ -264,9 +264,9 @@
                                 <li><a href="{{URL::action('categoriaController@altaCategoria')}}">Categoria</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Graficas</span></a>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Reportes</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="chart-flot.html">Flot</a></li>
+                                <li><a href="{{URL::action('categoriaController@reporteCategoria')}}">Categorias</a></li>
                                 <li><a href="chart-morris.html">Morris</a></li>
                                 <li><a href="chart-chartjs.html">ChartJs</a></li>
                                 <li><a href="chart-chartist.html">Chartist </a></li>

@@ -26,7 +26,7 @@ Route::get('/altaCategoria','categoriaController@altaCategoria');
 Route::POST('/guardaCategoria','categoriaController@guardaCategoria')->name('guardaCategoria');
 Route::get('/reporteCategorias','categoriaController@reporteCategoria');
 Route::get('/eliminaCategoria/{idCat}','categoriaController@eliminaCategoria')->name('eliminaCategoria');
-Route::get('/efisicaCategoria/{idCat}','categoriaController@efisicaCategoria')->name('efisicaCategoria');
+Route::get('/eFisicaCategoria/{idCat}','categoriaController@eFisicaCategoria')->name('eFisicaCategoria');
 Route::get('/restauraCategoria/{idCat}','categoriaController@restauraCategoria')->name('restauraCategoria');
 Route::get('/modificaCategoria/{idCat}','categoriaController@modificaCategoria')->name('modificaCategoria');
 Route::POST('/editaCategoria','categoriaController@editaCategoria')->name('editaCategoria');

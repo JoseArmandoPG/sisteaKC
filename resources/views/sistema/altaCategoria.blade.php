@@ -15,7 +15,7 @@
                         <label for="exampleInputname">Clave Categoria</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-key"></i></div>
-                            <input type="text" name="idCat" id="idCat" class="form-control" value="{{$idest}}" readonly="readonly">
+                            <input type="text" name="idCat" id="idCat" class="form-control" value="{{$idcate}}" readonly="readonly">
                         </div>
                     </div>
                 </div>
