@@ -31,3 +31,12 @@ Route::get('/restauraCategoria/{idCat}','categoriaController@restauraCategoria')
 Route::get('/modificaCategoria/{idCat}','categoriaController@modificaCategoria')->name('modificaCategoria');
 Route::POST('/editaCategoria','categoriaController@editaCategoria')->name('editaCategoria');
 
+/** Ubicaciones **/
+Route::get('/altaUbicacion','ubicacionController@altaUbicacion');
+Route::POST('/guardaUbicacion','ubicacionController@guardaUbicacion')->name('guardaUbicacion');
+Route::get('/reporteUbicaciones','ubicacionController@reporteUbicacion');
+Route::get('/eliminaUbicacion/{idCat}','ubicacionController@eliminaUbicacion')->name('eliminaUbicacion');
+Route::get('/eFisicaUbicacion/{idCat}','ubicacionController@eFisicaUbicacion')->name('eFisicaUbicacion');
+Route::get('/restauraUbicacion/{idCat}','ubicacionController@restauraUbicacion')->name('restauraUbicacion');
+Route::get('/modificaUbicacion/{idCat}','ubicacionController@modificaUbicacion')->name('modificaUbicacion');
+Route::POST('/editaUbicacion','ubicacionController@editaUbicacion')->name('editaUbicacion');

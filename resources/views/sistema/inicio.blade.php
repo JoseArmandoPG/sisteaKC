@@ -259,30 +259,31 @@
                         <li class="nav-label">Modulos</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Altas</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="email-compose.html">Producto</a></li>
-                                <li><a href="email-read.html">Venta</a></li>
                                 <li><a href="{{URL::action('categoriaController@altaCategoria')}}">Categoria</a></li>
+                                <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
+                                <li><a href="#">Plataforma</a></li>
+                                <li><a href="#">Usuario</a></li>
+                                <li><a href="#">Marca</a></li>
+                                <li><a href="#">Producto</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Reportes</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('categoriaController@reporteCategoria')}}">Categorias</a></li>
-                                <li><a href="chart-morris.html">Morris</a></li>
-                                <li><a href="chart-chartjs.html">ChartJs</a></li>
-                                <li><a href="chart-chartist.html">Chartist </a></li>
-                                <li><a href="chart-amchart.html">AmChart</a></li>
-                                <li><a href="chart-echart.html">EChart</a></li>
-                                <li><a href="chart-sparkline.html">Sparkline</a></li>
-                                <li><a href="chart-peity.html">Peity</a></li>
+                                <li><a href="{{URL::action('ubicacionController@reporteUbicacion')}}">Ubicaciones</a></li>
+                                <li><a href="#">Plataformas</a></li>
+                                <li><a href="#">Usuarios </a></li>
+                                <li><a href="#">Marcas</a></li>
+                                <li><a href="#">Productos</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-clipboard"></i><span class="hide-menu">Reportes</span></a>
+                        {{-- <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-clipboard"></i><span class="hide-menu">Reportes</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="chart-flot.html">Productos</a></li>
                                 <li><a href="chart-morris.html">Ventas</a></li>
                                 <li><a href="chart-chartjs.html">Categoria</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-label">Features</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bootstrap UI <span class="label label-rouded label-warning pull-right">6</span></span></a>
                             <ul aria-expanded="false" class="collapse">
