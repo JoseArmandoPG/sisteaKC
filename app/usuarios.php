@@ -9,6 +9,6 @@ class usuarios extends Model
 {
     use SoftDeletes;
     protected $primaryKey   =   'idUsu';
-    protected $fillable     =   ['idUsu','usuario','password','tipo_usu','nombre'];
+    protected $fillable     =   ['idUsu','usuario','password','permisos','nombre'];
     protected $date=['deleted_at'];
 }

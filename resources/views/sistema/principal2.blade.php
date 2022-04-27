@@ -1,3 +1,8 @@
+@if (Session::get('sesionidUsu')!="")
+@else
+    {{Session::flash('ERROR','ES NECESARIO LOGUEARSE ANTES DE CONTINUAR')}}
+    <script>window.location.replace("{{url('login')}}")</script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,16 +16,14 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
-    
     <!-- Custom CSS -->
+
     <link href="{{asset('css/lib/calendar2/semantic.ui.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/lib/calendar2/pignose.calendar.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/lib/owl.carousel.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/lib/owl.theme.default.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/lib/chartist/chartist.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/helper.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,9 +50,11 @@
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        {{-- <b><div class="dark-logo" alt="homepage">K</div></b> --}}
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                        {{-- <span><div class="dark-logo" alt="homepage">KC</div></span> --}}
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -249,36 +254,42 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li class="nav-label">Home</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right">2</span></span></a>
+                        <li class="nav-label">Inicio</li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Principal <span class="label label-rouded label-primary pull-right">2</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Ecommerce </a></li>
-                                <li><a href="index1.html">Analytics </a></li>
+                                <li><a href="#">Ecommerce </a></li>
+                                <li><a href="#">Analytics </a></li>
                             </ul>
                         </li>
-                        <li class="nav-label">Apps</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Email</span></a>
+                        <li class="nav-label">Modulos</li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Altas</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Categoria</a></li>
                                 <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
                                 <li><a href="{{URL::action('plataformaController@altaPlataforma')}}">Plataforma</a></li>
-                                <li><a href="{{URL::action('usuarioController@altaUsuario')}}">Usuario</a></li>
-                                <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li>
-                                <li><a href="{{URL::action('productoController@altaProducto')}}">Producto</a></li>
-                                <li><a href="{{URL::action('productoController@prueba')}}">prueba</a></li>
+                                <li><a href="#">Usuario</a></li>
+                                <li><a href="#">Marca</a></li>
+                                <li><a href="#">Producto</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Reportes</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('ubicacionController@reporteUbicacion')}}">Categorias</a></li>
                                 <li><a href="{{URL::action('ubicacionController@reporteUbicacion')}}">Ubicaciones</a></li>
                                 <li><a href="{{URL::action('plataformaController@reportePlataforma')}}">Plataformas</a></li>
-                                <li><a href="{{URL::action('usuarioController@reporteUsuario')}}">Usuarios </a></li>
-                                <li><a href="{{URL::action('marcaController@reporteMarca')}}">Marcas</a></li>
-                                <li><a href="{{URL::action('productoController@reporteProducto')}}">Productos</a></li>
+                                <li><a href="#">Usuarios </a></li>
+                                <li><a href="#">Marcas</a></li>
+                                <li><a href="#">Productos</a></li>
                             </ul>
                         </li>
-                        <!--<li class="nav-label">Features</li>
+                        <!-- <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-clipboard"></i><span class="hide-menu">Reportes</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="chart-flot.html">Productos</a></li>
+                                <li><a href="chart-morris.html">Ventas</a></li>
+                                <li><a href="chart-chartjs.html">Categoria</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-label">Features</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bootstrap UI <span class="label label-rouded label-warning pull-right">6</span></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="ui-alert.html">Alert</a></li>
@@ -365,7 +376,7 @@
                                 </li>
                                 <li><a href="#">item 1.4</a></li>
                             </ul>
-                        </li>-->
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -378,11 +389,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Dashboard</h3> </div>
+                    <h3 class="text-primary">Principal</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+                        <li class="breadcrumb-item active">Principal</li>
                     </ol>
                 </div>
             </div>
@@ -410,27 +421,13 @@
     <script src="{{asset('js/sidebarmenu.js')}}"></script>
     <!--stickey kit -->
     <script src="{{asset('js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <!--Custom JavaScript -->
 
-
-    <!-- <script src="{{asset('js/lib/datamap/d3.min.js')}}"></script>
-    <script src="{{asset('js/lib/datamap/topojson.js')}}"></script>
-    <script src="{{asset('js/lib/datamap/datamaps.world.min.js')}}"></script>
-    <script src="{{asset('js/lib/datamap/datamap-init.js')}}"></script> -->
-
-    <script src="{{asset('js/lib/weather/jquery.simpleWeather.min.js')}}"></script>
-    <script src="{{asset('js/lib/weather/weather-init.js')}}"></script>
-    <script src="{{asset('js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
-
-
-    <!-- <script src="{{asset('js/lib/chartist/chartist.min.js')}}"></script>
-    <script src="{{asset('js/lib/chartist/chartist-plugin-tooltip.min.js')}}"></script>
-    <script src="{{asset('js/lib/chartist/chartist-init.js')}}"></script> -->
 
     <!-- Amchart -->
-    <!-- <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
+    <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
     <script src="{{asset('js/lib/morris-chart/morris.js')}}"></script>
-    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script> -->
+    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script>
 
 
 	<script src="{{asset('js/lib/calendar-2/moment.latest.min.js')}}"></script>
@@ -445,7 +442,7 @@
 
     <script src="{{asset('js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
-    <!-- <script src="js/scripts.js"></script> -->
+    <script src="{{asset('js/scripts.js')}}"></script>
     <!-- scripit init-->
 
     <!-- DATATABLES -->
@@ -459,7 +456,7 @@
     <script src="{{asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('js/lib/datatables/datatables-init.js')}}"></script>
 
-    <!--Custom JavaScript -->
+    <!-- Custom JavaScript -->
     <script src="{{asset('js/custom.min.js')}}"></script>
 
 </body>

@@ -14,7 +14,7 @@ class ubicacionController extends Controller
     public function altaUbicacion(){
         $clavesig = ubicaciones::orderBy('idUb','ubicacion')->take(1)->get();
 		$idubi	  = $clavesig[0]->idUb+1;
-		return view ('sistema.altaUbicacion')->with('idubi',$idubi);
+		return view ('sistema.ubicaciones.altaUbicacion')->with('idubi',$idubi);
     }
 
     public function guardaUbicacion(Request $request){
@@ -39,7 +39,7 @@ class ubicacionController extends Controller
     public function reporteUbicacion(){
         $ubicaciones=\DB::select("SELECT idUb,ubicacion,deleted_at
         FROM ubicaciones");
-        return view('sistema.reporteUbicaciones')->with('ubicaciones',$ubicaciones);
+        return view('sistema.ubicaciones.reporteUbicaciones')->with('ubicaciones',$ubicaciones);
     }
 
     public function eliminaUbicacion($idUb){
@@ -65,7 +65,7 @@ class ubicacionController extends Controller
 
     public function modificaUbicacion($idUb){
         $ubicacionM = ubicaciones::where('idUb','=',$idUb)->get();
-        return view('sistema.editaUbicacion')->with('ubicacionM',$ubicacionM[0]);
+        return view('sistema.ubicaciones.editaUbicacion')->with('ubicacionM',$ubicacionM[0]);
     }
 
     public function editaUbicacion(Request $request){

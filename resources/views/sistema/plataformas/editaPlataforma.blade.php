@@ -2,32 +2,32 @@
 @section('contenido')
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Modifica Estado</h4>
+            <h4 class="card-title">Modifica Plataforma</h4>
             <h6 class="card-subtitle">Conkalmhe</h6>
-            <form action="{{route('editaCategoria')}}" class="form p-t-20" method="post" enctype='multipart/form-data'>
+            <form action="{{route('editaPlataforma')}}" class="form p-t-20" method="post" enctype='multipart/form-data'>
                 {{csrf_field()}}
                 <div class="row">
                     <div class="col-lg-6">
-                        @if($errors->first('idCat'))
-                            <i>{{$errors->first('idCat')}}</i>
+                        @if($errors->first('idPla'))
+                            <i>{{$errors->first('idPla')}}</i>
                         @endif
                         <div class="form-group">
-                            <label for="exampleInputname">Clave Categoria</label>
+                            <label for="exampleInputname">Clave Plataforma</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-key"></i></div>
-                                <input type="text" name="idCat" id="idCat" class="form-control" value="{{$categoriaM->idCat}}" readonly>
+                                <input type="text" name="idPla" id="idPla" class="form-control" value="{{$plataformaM->idPla}}" readonly>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        @if($errors->first('nombre'))
-                            <i>{{$errors->first('nombre')}}</i>
+                        @if($errors->first('plataforma'))
+                            <i>{{$errors->first('plataforma')}}</i>
                         @endif
                         <div class="form-group">
-                            <label for="exampleInputname">Categoria</label>
+                            <label for="exampleInputname">Plataforma</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-user"></i></div>
-                                <input type="text" class="form-control" name="categoria" id="categoria" value="{{$categoriaM->categoria}}">
+                                <input type="text" class="form-control" name="plataforma" id="plataforma" value="{{$plataformaM->plataforma}}">
                             </div>
                         </div>
                     </div>

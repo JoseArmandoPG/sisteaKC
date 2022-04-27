@@ -14,7 +14,7 @@ class categoriaController extends Controller
     public function altaCategoria(){
         $clavesig = categorias::orderBy('idCat','categoria')->take(1)->get();
 		$idcate	  = $clavesig[0]->idCat+1;
-		return view ('sistema.altaCategoria')->with('idcate',$idcate);
+		return view ('sistema.categorias.altaCategoria')->with('idcate',$idcate);
     }
 
     public function guardaCategoria(Request $request){
@@ -39,7 +39,7 @@ class categoriaController extends Controller
     public function reporteCategoria(){
         $categorias=\DB::select("SELECT idCat,categoria,deleted_at
         FROM categorias");
-        return view('sistema.reporteCategorias')->with('categorias',$categorias);
+        return view('sistema.categorias.reporteCategorias')->with('categorias',$categorias);
     }
 
     public function eliminaCategoria($idCat){
@@ -65,7 +65,7 @@ class categoriaController extends Controller
 
     public function modificaCategoria($idCat){
         $categoriaM = categorias::where('idCat','=',$idCat)->get();
-        return view('sistema.editaCategoria')->with('categoriaM',$categoriaM[0]);
+        return view('sistema.categorias.editaCategoria')->with('categoriaM',$categoriaM[0]);
     }
 
     public function editaCategoria(Request $request){
@@ -81,7 +81,7 @@ class categoriaController extends Controller
         $cat->categoria = $request->categoria;
         $cat->save();
 
-        $proceso = "Modificar Estado";
+        $proceso = "Modificar Categoria";
         $mensaje = "Registro modificado corretamente";
         return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
     }

@@ -17,7 +17,7 @@ class Usuarios extends Migration
             $table->increments('idUsu');
             $table->string('usuario',40);
             $table->string('password',40);
-            $table->string('tipo_usu',40);
+            $table->string('permisos',40);
             $table->string('nombre',40);
             $table->rememberToken();
             $table->timestamps();
