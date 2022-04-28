@@ -30,30 +30,45 @@ class productoController extends Controller
                     ->with('idproSig',$idproSig);
     }
 
-    public function guardaUsuario(Request $request){
-        $idUsu      = $request->idUsu;
-        $usuario    = $request->usuario;
-        $password   = $request->password;
-        $permisos   = $request->permisos;
-        $nombre     = $request->nombre;
+    public function guardaProducto(Request $request){
+        $idPro      = $request->idPro;
+        $codigo    = $request->codigo;
+        $producto   = $request->producto;
+        $modelo   = $request->modelo;
+        $unidad     = $request->unidad;
+        $stock = $request->stock;
+        $precio = $request->precio;
+        $iva = $request->iva;
+        $total = $request->total;
 
-        $this->validate($request,[
-            'idUsu'     =>'required|numeric',
-            'usuario'   =>'required|alpha_num',
-            'password'  =>'required|alpha_num',
-            'permisos'  =>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
-            'nombre'    =>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
-        ]);
+        $file	= $request->file('foto');
+		if($file!=""){
+		$ldate	= date('Ymd_His_');
+		$imgfo	= $file->getClientOriginalName();
+		$imgfo2	= $ldate.$imgfo;
+		\Storage::disk('local')->put($imgfo2,\File::get($file));
+		}
+		else {
+			$imgfo2	= 'sin_foto.jpg';
+        }
 
-        $usu                = new usuarios;
-        $usu->idUsu         = $request->idUsu;
-        $usu->usuario       = $request->usuario;
-        $usu->password      = $request->password;
-        $usu->permisos      = $request->permisos;
-        $usu->nombre        = $request->nombre;
-        $usu->save();
+        $prod                = new productos;
+        $prod->idPro         = $request->idPro;
+        $prod->codigo       = $request->codigo;
+        $prod->producto      = $request->producto;
+        $prod->modelo      = $request->modelo;
+        $prod->unidad        = $request->unidad;
+        $prod->stock        = $request->stock;
+        $prod->precio        = $request->precio;
+        $prod->iva        = $request->iva;
+        $prod->total        = $request->total;
+        $prod->idCat        = $request->idCat;
+        $prod->idUb        = $request->idUb;
+        $prod->idPla        = $request->idPla;
+        $prod->idMarca        = $request->idMarca;
+        $prod->save();
 
-        $proceso = "Alta Usuario";
+        $proceso = "Alta Producto";
         $mensaje = "Registro guardado correctamente";
         return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
     }

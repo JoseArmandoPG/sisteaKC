@@ -95,7 +95,7 @@
                         <label for="exampleInputname">Precio</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-key"></i></div>
-                            <input type="text" name="precio" id="precio" class="form-control" value="">
+                            <input type="text" name="precio" id="precio" class="form-control" value="{{old('precio')}}">
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         <label for="exampleInputname">IVA</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input type="text" name="iva" id="iva" class="form-control" value="">
+                            <input type="text" name="iva" id="iva" class="form-control" value="{{old('iva')}}">
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         <label for="exampleInputname">Total</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input type="text" name="total" id="total" class="form-control" value="">
+                            <input type="text" name="total" id="total" class="form-control" value="{{old('total')}}">
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,9 @@
             <button type="reset" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light" value="Cancelar"><i class="ti-close"></i>Cancelar</button>
         </form>
     </div>
-</div>
+{{-- </div>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script> --}}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
 
