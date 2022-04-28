@@ -2146,7 +2146,7 @@ textarea {
   margin-bottom: 30px;
 }
 .card .card-subtitle {
-  color: #99abb4;
+  color: #78868d;
   font-weight: 300;
   margin-bottom: 15px;
 }
@@ -2268,13 +2268,13 @@ textarea {
 }
 .card-title {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 22px;
 }
 .card-title h4 {
   display: inline-block;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 22px;
 }
 .card-title p {
@@ -4863,7 +4863,9 @@ footer p {
 }
 .form-control:hover {
   box-shadow: none;
-  border-color: #e7e7e7;
+  /* border-color: #e7e7e7; */
+  /* border-color: #4680ff; */
+  border-color: #878787;
 }
 .form-control.active,
 .form-control:focus {

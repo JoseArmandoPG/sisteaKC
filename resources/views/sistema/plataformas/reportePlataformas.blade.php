@@ -2,13 +2,13 @@
 @section('contenido')
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Reporte Plataformas</h4>
+            <h4 class="card-title text-primary">Plataformas</h4>
             <h6 class="card-subtitle">Conkalmhe</h6>
             <div class="table-responsive m-t-40">
                 <table  class="table table-hover">
-                    <thead>
+                    <thead class="table-secondary">
                         <tr>
-                            <th>Clave</th>
+                            <th>#</th>
                             <th>Plataforma</th>
                             <th>Operaciones</th>
                             @foreach($plataformas as $pl)

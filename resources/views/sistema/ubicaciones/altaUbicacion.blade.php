@@ -2,32 +2,30 @@
 @section('contenido')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Alta Ubicacion</h4>
-        <h6 class="card-subtitle">Conkalmhe</h6>
+        <h4 class="card-title text-primary">Ubicacion</h4>
+        <h6 class="card-subtitle">ConKalmhe</h6>
         <form action="{{route('guardaUbicacion')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-0">
                     @if($errors->first('idUb'))
                         <i>{{$errors->first('idUb')}}</i>
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputname">Clave Ubicacion</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-key"></i></div>
-                            <input type="text" name="idUb" id="idUb" class="form-control" value="{{$idubi}}" readonly="readonly">
+                            <input type="hidden" name="idUb" id="idUb" class="form-control" value="{{$idubi}}" readonly="readonly">
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     @if($errors->first('ubicacion'))
                         <i>{{$errors->first('ubicacion')}}</i>
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputname">Ubicacion</label>
+                        <label for="exampleInputname"><b>Nombre</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <div class="input-group-addon"><i class="ti-home"></i></div>
                             <input type="text" name="ubicacion" id="ubicacion" class="form-control" value="{{old('ubicacion')}}">
                         </div>
                     </div>
