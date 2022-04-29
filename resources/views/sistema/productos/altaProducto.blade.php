@@ -3,6 +3,9 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title text-primary">Producto</h4>
+        <!-- {{$hora}}<br>
+        {{$fechaHora}} -->
+        <!-- {{$usuarioActivo}} -->
         <h6 class="card-subtitle">ConKalmhe</h6>
         <form action="{{route('guardaProducto')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
@@ -184,7 +187,7 @@
                                 <Select class="form-control" name='idPla'>
                                     <option value="0">Seleccione Plataforma</option>
                                     @foreach($plataformas as $pl)
-                                        @if($ca->deleted_at!="")
+                                        @if($pl->deleted_at!="")
                                         @else
                                             <option value = '{{$pl->idPla}}'>{{$pl->plataforma}}</option>
                                         @endif
@@ -201,7 +204,7 @@
                                 <Select class="form-control" name='idMarca'>
                                     <option value="0">Seleccione Marca</option>
                                     @foreach($marcas as $ma)
-                                        @if($ca->deleted_at!="")
+                                        @if($ma->deleted_at!="")
                                         @else
                                             <option value = '{{$ma->idMarca}}'>{{$ma->marca}}</option>
                                         @endif

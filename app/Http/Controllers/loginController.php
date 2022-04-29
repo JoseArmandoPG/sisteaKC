@@ -35,7 +35,7 @@ class loginController extends Controller
             }else{
                 Session::put('sesionNombre',$consulta[0]->nombre);
                 Session::put('sesionidUsu',$consulta[0]->idUsu);
-                Session::put('sesionTipo',$consulta[0]->tipo_usu);
+                Session::put('sesionTipo',$consulta[0]->permisos);
 
                 return redirect()->route('inicio');
             }
@@ -57,6 +57,7 @@ class loginController extends Controller
         Session::forget('sesionTipo');
         Session::flush();
 
-        return view('sistema.page-login');
+        //return view('sistema.page-login');
+        return redirect()->route('login');
     }
 }

@@ -1,3 +1,8 @@
+@if (Session::get('sesionidUsu')!="")
+@else
+    {{Session::flash('error','es necesario loguearse antes de continuar')}}
+    <script>window.location.replace("{{url('login')}}")</script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 
@@ -263,7 +268,7 @@
                                 <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
                                 <li><a href="{{URL::action('plataformaController@altaPlataforma')}}">Plataforma</a></li>
                                 <li><a href="{{URL::action('usuarioController@altaUsuario')}}">Usuario</a></li>
-                                <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li>
+                                <!-- <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li> -->
                                 <li><a href="{{URL::action('productoController@altaProducto')}}">Producto</a></li>
                             </ul>
                         </li>

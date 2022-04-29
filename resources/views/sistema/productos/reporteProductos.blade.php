@@ -6,7 +6,7 @@
             <h6 class="card-subtitle">ConKalmhe</h6>
             <div class="table-responsive m-t-40">
                 <table  class="table table-hover">
-                    <thead class="table-secondary">
+                    <thead style="background-color: rgba(255, 98, 0, 0.45);">
                         <tr>
                             <th>#</th>
                             <th>Codigo</th>
