@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BitacoraProductos extends Migration
+class historicos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class BitacoraProductos extends Migration
      */
     public function up()
     {
-        Schema::create('bitacoraProductos', function (Blueprint $table){
-            $table->increments('idBP');
+        Schema::create('historicos', function (Blueprint $table){
+            $table->increments('idBV');
             $table->dateTime('fechaHora');
-            $table->integer('tipo');
-            $table->integer('idPro')->unsigned();
-            $table->foreign('idPro')->references('idPro')->on('productos');
+            $table->double('precio');
+            $table->double('iva');
+            $table->double('total');
+            $table->integer('idVenta')->unsigned();
+            $table->foreign('idVenta')->references('idVenta')->on('ventas');
             $table->integer('idUsu')->unsigned();
             $table->foreign('idUsu')->references('idUsu')->on('usuarios');
             $table->rememberToken();
@@ -33,6 +35,6 @@ class BitacoraProductos extends Migration
      */
     public function down()
     {
-        Schema::drop('bitacoraProductos');
+        Schema::drop('historicos');
     }
 }

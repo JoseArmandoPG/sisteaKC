@@ -81,3 +81,7 @@ Route::get('/eFisicaProducto/{idPro}','productoController@eFisicaProducto')->nam
 Route::get('/restauraProducto/{idPro}','productoController@restauraProducto')->name('restauraProducto');
 Route::get('/modificaProducto/{idPro}','productoController@modificaProducto')->name('modificaProducto');
 Route::POST('/editaProducto','productoController@editaProducto')->name('editaProducto');
+
+/** Ventas **/
+Route::get('/venta','ventaController@venta');
+Route::get('/autocompleteProduc/{codigo}','ventaController@autocompleteProduc')->name('autocompleteProduc');

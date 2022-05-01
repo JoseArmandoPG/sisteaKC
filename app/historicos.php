@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class bitacoraProductos extends Model
+class historicos extends Model
 {
     use SoftDeletes;
-    protected $primaryKey   =   'idBP';
-    protected $fillable     =   ['idBP','fechaHora','tipo','idPro','idUsu'];
+    protected $primaryKey   =   'idBV';
+    protected $fillable     =   ['idBV','fechaHora','precio','iva','total','idVenta','idUsu'];
     protected $date=['deleted_at'];
 }

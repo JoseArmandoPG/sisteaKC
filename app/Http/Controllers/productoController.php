@@ -10,7 +10,7 @@ use App\categorias;
 use App\ubicaciones;
 use App\plataformas;
 use App\marcas;
-use App\bitacoraProductos;
+use App\bitacoras;
 use App\DB;
 use Session;
 
@@ -20,15 +20,18 @@ class productoController extends Controller
         date_default_timezone_set('America/Mexico_City');
         $fecha = date("d-m-Y");
         $hora = date("H:i:s");
-        $fechaHora = date('d-m-Y H:i:s', time());
+        $fechaHoraL = date('d-m-Y H:i:s', time());
         $time = time();
         $usuarioActivo  = Session::get('sesionNombre');
+        $userID         = Session::get('sesionidUsu');
         $categorias     = categorias::OrderBy('categoria','deleted_at','asc')->get();
         $ubicaciones    = ubicaciones::OrderBy('ubicacion','deleted_at','asc')->get();
         $plataformas    = plataformas::OrderBy('plataforma','deleted_at','asc')->get();
         $marcas         = marcas::OrderBy('marca','deleted_at','asc')->get();
         $clavesig       = productos::orderBy('idPro','producto')->take(1)->get();
 		$idproSig       = $clavesig[0]->idPro+1;
+        // $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
+        // $idBitSig       = $sigBita[0]->idBP+1;
 		return view ('sistema.productos.altaProducto')
                     ->with('categorias',$categorias)
                     ->with('ubicaciones',$ubicaciones)
@@ -36,11 +39,19 @@ class productoController extends Controller
                     ->with('marcas',$marcas)
                     ->with('idproSig',$idproSig)
                     ->with('hora',$hora)
-                    ->with('fechaHora',$fechaHora)
-                    ->with('usuarioActivo',$usuarioActivo);
+                    ->with('fechaHoraL',$fechaHoraL)
+                    ->with('usuarioActivo',$usuarioActivo)
+                    ->with('userID',$userID);
     }
 
     public function guardaProducto(Request $request){
+        date_default_timezone_set('America/Mexico_City');
+        $fechaHoraL = date('Y-m-d H:i:s', time());
+        $userID         = Session::get('sesionidUsu');
+        $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
+		$idBPSig        = $sigBita[0]->idBP+1;
+
+
         $idPro      = $request->idPro;
         $codigo     = $request->codigo;
         $producto   = $request->producto;
@@ -92,6 +103,14 @@ class productoController extends Controller
         $prod->idMarca      = $request->idMarca;
         $prod->foto         = $imgfo2;
         $prod->save();
+
+        $bPro               = new bitacoras;
+        $bPro->idBP         = $idBPSig;
+        $bPro->fechaHora    = $fechaHoraL;
+        $bPro->tipo         = 1;
+        $bPro->idPro        = $request->idPro;
+        $bPro->idUSu        = $userID;
+        $bPro->save();
 
         $proceso = "Alta Producto";
         $mensaje = "Registro guardado correctamente";

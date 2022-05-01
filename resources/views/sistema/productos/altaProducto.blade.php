@@ -4,11 +4,12 @@
     <div class="card-body">
         <h4 class="card-title text-primary">Producto</h4>
         <!-- {{$hora}}<br>
-        {{$fechaHora}} -->
+        {{$fechaHoraL}} -->
         <!-- {{$usuarioActivo}} -->
         <h6 class="card-subtitle">ConKalmhe</h6>
         <form action="{{route('guardaProducto')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
+            
             <div class="row">
                 <div class="col-lg-0">
                     @if($errors->first('idPro'))

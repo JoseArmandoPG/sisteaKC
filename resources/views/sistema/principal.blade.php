@@ -268,7 +268,7 @@
                                 <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
                                 <li><a href="{{URL::action('plataformaController@altaPlataforma')}}">Plataforma</a></li>
                                 <li><a href="{{URL::action('usuarioController@altaUsuario')}}">Usuario</a></li>
-                                <!-- <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li> -->
+                                <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li>
                                 <li><a href="{{URL::action('productoController@altaProducto')}}">Producto</a></li>
                             </ul>
                         </li>
@@ -282,6 +282,7 @@
                                 <li><a href="{{URL::action('productoController@reporteProducto')}}">Productos</a></li>
                             </ul>
                         </li>
+                        <li> <a href="{{URL::action('ventaController@venta')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Venta</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
