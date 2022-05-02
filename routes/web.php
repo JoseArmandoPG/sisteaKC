@@ -84,4 +84,5 @@ Route::POST('/editaProducto','productoController@editaProducto')->name('editaPro
 
 /** Ventas **/
 Route::get('/venta','ventaController@venta');
-Route::get('/autocompleteProduc/{codigo}','ventaController@autocompleteProduc')->name('autocompleteProduc');
+Route::get('/detalleProd','productoController@detalleProd')->name('detalleProd');
+Route::get('/productoDetalle','productoController@productoDetalle')->name('productoDetalle');

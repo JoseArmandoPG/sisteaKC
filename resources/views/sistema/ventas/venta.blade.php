@@ -9,7 +9,36 @@
         <h6 class="card-subtitle">ConKalmhe</h6>
         <form action="{{route('guardaProducto')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
-            
+            <div class="row">
+            <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputuname"><b>Categoria</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
+                                <Select class="form-control" name='categoria' id="categoria">
+                                    <option value="0">Seleccione Categoria</option>
+                                    @foreach($categorias as $cat)
+                                        @if($cat->deleted_at!="")
+                                        @else
+                                            <option value = '{{$cat->idCat}}'>{{$cat->categoria}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                            <label for="exampleInputuname"><b>Producto</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-receipt"></i></div>
+                                <Select class="form-control" name='producto' id="producto">
+                                    <option value="0">Seleccione Producto</option>
+                                </select>
+                            </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-0">
                     @if($errors->first('idPro'))
@@ -30,7 +59,9 @@
                         <label for="exampleInputname"><b>Codigo</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <input type="text" name="codigo" id="codigo" class="form-control" value="{{old('codigo')}}">
+                            <div id="detalleProducto">
+                            <input type="text" name="codigo" id="codigo" class="form-control" value="">
+</div>
                         </div>
                     </div>
                 </div>
@@ -193,25 +224,24 @@
     </div>
 </div>
 <!-- <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script> -->
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript">
-    $('#codigo').autocomplete({
-        source: function(request, response){
-            $.ajax({
-                url: "{{ route('autocompleteProduc','ventaController@autocompleteProduc') }}",
-                datatype: 'json',
-                data: {
-                    term: request.term
-                },
-                success: function(data){
-                    response(data)
-                }
-            });
-        },
-        select: function(evento, selected) {
-        // Actualizar campo oculto
-        $('#modelo').val(selected.item.value);
-    }
+    $(document).ready(function(){
+        $("#categoria").click(function(){
+            $("#producto").load('{{url('detalleProd')}}' + '?idCat=' + this.options[this.selectedIndex].value);
+            //console.log(idCat);
+        });
+
+        $("#producto").click(function(){
+            $("#productoDetalle").load('{{url('productoDetalle')}}' + '?idPro=' + this.options[this.selectedIndex].value);
+            //console.log(idCat);
+        });
+        
     });
 </script>
 @stop

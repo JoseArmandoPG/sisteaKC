@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\ventas;
 use App\productos;
+use App\categorias;
 use App\DB;
 use Session;
 
@@ -22,6 +23,8 @@ class ventaController extends Controller
         $userID         = Session::get('sesionidUsu');
         $clavesig       = ventas::orderBy('idVenta')->take(1)->get();
 		$idvenSig       = $clavesig[0]->idVenta+1;
+        $productos      = productos::all();
+        $categorias     = categorias::all();
         // $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
         // $idBitSig       = $sigBita[0]->idBP+1;
 		return view ('sistema.ventas.venta')
@@ -29,23 +32,8 @@ class ventaController extends Controller
                     ->with('hora',$hora)
                     ->with('fechaHoraL',$fechaHoraL)
                     ->with('usuarioActivo',$usuarioActivo)
-                    ->with('userID',$userID);
-    }
-
-    public function autocompleteProduc(Request $request){
-        $term = $request->get('term');
-
-        $querys = productos::where('codigo', 'LIKE', '%' . $term . '%')->get();
-
-        $data = [];
-
-        foreach ($querys as $querys) {
-            $data[] = [
-                'label' => $querys->codigo,
-                'value' => $querys->modelo
-            ];
-        }
-
-        return $data;
+                    ->with('userID',$userID)
+                    ->with('productos',$productos)
+                    ->with('categorias',$categorias);
     }
 }

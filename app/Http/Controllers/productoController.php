@@ -240,4 +240,16 @@ class productoController extends Controller
         $mensaje = "Registro modificado corretamente";
         return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
     }
+
+    public function detalleProd(Request $request){
+        $idCat = $request->get('idCat');
+        $productos = productos::where('idCat','=',$idCat)->get();
+        return view('sistema.ventas.detalleProd')->with('productos',$productos);
+    }
+
+    public function productoDetalle(Request $request){
+        $idPro = $request->get('idPro');
+        $productos = productos::where('idPro','=',$idPro)->get();
+        return view('sistema.ventas.productoDetalle')->with('productos',$productos);
+    }
 }
