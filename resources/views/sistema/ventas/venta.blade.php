@@ -40,17 +40,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-0">
-                    @if($errors->first('idPro'))
-                        <i>{{$errors->first('idPro')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="hidden" name="idPro" id="idPro" class="form-control" value="{{$idvenSig}}" readonly="readonly">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-lg-6">
                     @if($errors->first('codigo'))
                         <i>{{$errors->first('codigo')}}</i>
@@ -59,9 +48,9 @@
                         <label for="exampleInputname"><b>Codigo</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <div id="detalleProducto">
-                            <input type="text" name="codigo" id="codigo" class="form-control" value="">
-</div>
+                            <div id="productoDetalle">
+                                <input type="text" name="codigo" id="codigo" class="form-control" value="">
+                            </div>
                         </div>
                     </div>
                 </div>
