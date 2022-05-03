@@ -49,12 +49,14 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{URL::action('loginController@inicio')}}">
                         <!-- Logo icon -->
-                        <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <!-- <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b> -->
+                        <b><img src="images/kc1_ccexpress (2).png" alt="homepage" class="dark-logo" with="21" height="21" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                        <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
+                        <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -282,7 +284,13 @@
                                 <li><a href="{{URL::action('productoController@reporteProducto')}}">Productos</a></li>
                             </ul>
                         </li>
-                        <li> <a href="{{URL::action('ventaController@venta')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Venta</span></a></li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Ventas <span class="label label-rouded label-warning pull-right">2</span></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{URL::action('ventaController@venta')}}">Nueva Venta</a></li>
+                                <li><a href="{{URL::action('ventaController@reporteVenta')}}">Reporte de Ventas</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li> <a href="{{URL::action('ventaController@venta')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Venta</span></a></li> -->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

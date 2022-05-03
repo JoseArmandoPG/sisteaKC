@@ -24,6 +24,7 @@ class Productos extends Migration
             $table->double('iva');
             $table->double('total');
             $table->integer('tipo');
+            $table->string('status',40);
             $table->string('foto',200);
             $table->integer('idCat')->unsigned();
             $table->foreign('idCat')->references('idCat')->on('categorias');

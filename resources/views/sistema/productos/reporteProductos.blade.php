@@ -4,47 +4,59 @@
         <div class="card-body">
             <h4 class="card-title text-primary">Productos</h4>
             <h6 class="card-subtitle">ConKalmhe</h6>
+            <div class="input-group input-group-sm mb-3">
+                <input id="entradafilter" type="text" class="form-control">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><b>Filtro &nbsp;<i class="ti-filter"></i></b></span>
+                </div>
+            </div>
             <div class="table-responsive m-t-40">
                 <table  class="table table-hover">
                     <thead style="background-color: rgba(255, 98, 0, 0.45);">
                         <tr>
-                            <th>#</th>
-                            <th>Codigo</th>
-                            <th>Imagen</th>
-                            <th>Producto</th>
-                            <th>Modelo</th>
-                            <th>Unidad</th>
-                            <th>Stock</th>
-                            <th>Precio</th>
-                            <th>Iva</th>
-                            <th>Total</th>
-                            <th>Categoria</th>
-                            <th>Ubicacion</th>
-                            <th>Plataforma</th>
-                            <th>Marca</th>
-                            <th>Operaciones</th>
+                            <th><b>#</b></th>
+                            <th><b>Codigo</b></th>
+                            <!-- <th><b>Imagen</b></th> -->
+                            <th><b>Producto</b></th>
+                            <th><b>Modelo</b></th>
+                            <!-- <th><b>Unidad</b></th>-->
+                            <th><b>Stock</b></th>
+                            <!-- <th><b>Status</b></th>
+                            <th><b>Precio</b></th>
+                            <th><b>Iva</b></th>
+                            <th><b>Total</b></th> -->
+                            <th><b>Categoria</b></th>
+                            <th><b>Ubicacion</b></th>
+                            <th><b>Plataforma</b></th>
+                            <th><b>Marca</b></th>
+                            <th><b>Operaciones</b></th>
                             @foreach($productos as $pr)
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="contenidobusqueda">
                         <tr>
                             <td>{{$pr->idPro}}</td>
                             <td>{{$pr->codigo}}</td>
-                            <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td>
+                            <!-- <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td> -->
                             <td>{{$pr->producto}}</td>
                             <td>{{$pr->modelo}}</td>
-                            <td>{{$pr->unidad}}</td>
+                            <!-- <td>{{$pr->unidad}}</td> -->
                             <td>{{$pr->stock}}</td>
+                            <!-- <td>{{$pr->status}}</td>
                             <td>{{$pr->precio}}</td>
                             <td>{{$pr->iva}}</td>
-                            <td>{{$pr->total}}</td>
+                            <td>{{$pr->total}}</td> -->
                             <td>{{$pr->categoria}}</td>
                             <td>{{$pr->ubicacion}}</td>
                             <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->marca}}</td>
                             <td>
+                                <a href="{{URL::action('productoController@seeProducto',['idPro'=>$pr->idPro])}}" class="opt">
+                                    <i class="fa fa-eye fa-lg fa-fw" title="Inhabilitar"></i>
+                                </a>
                                 @if($pr->deleted_at =="")
-                                    <a href="{{URL::action('productoController@modificaProducto',['idPro'=>$pr->idPro])}}" class="opt">
+                                    
+                                    <a href="{{URL::action('productoController@modificaProducto',['idPro'=>$pr->idPro])}} " class="opt">
                                         <i class="fa fa-pencil fa-lg fa-fw" title="modificar"></i>
                                     </a>
                                     <a href="{{URL::action('productoController@eliminaProducto',['idPro'=>$pr->idPro])}}" class="opt">
@@ -66,4 +78,18 @@
             </div>
         </div>
     </div>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript">
+        $('#entradafilter').keyup(function () {
+            var rex = new RegExp($(this).val(), 'i');
+            $('.contenidobusqueda tr').hide();
+            $('.contenidobusqueda tr').filter(function () {
+                    return rex.test($(this).text());
+            }).show();
+        })
+    </script>
 @stop

@@ -30,8 +30,8 @@ class productoController extends Controller
         $marcas         = marcas::OrderBy('marca','deleted_at','asc')->get();
         $clavesig       = productos::orderBy('idPro','producto')->take(1)->get();
 		$idproSig       = $clavesig[0]->idPro+1;
-        // $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
-        // $idBitSig       = $sigBita[0]->idBP+1;
+        $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
+        $idBitSig       = $sigBita[0]->idBP+1;
 		return view ('sistema.productos.altaProducto')
                     ->with('categorias',$categorias)
                     ->with('ubicaciones',$ubicaciones)
@@ -48,7 +48,7 @@ class productoController extends Controller
         date_default_timezone_set('America/Mexico_City');
         $fechaHoraL = date('Y-m-d H:i:s', time());
         $userID         = Session::get('sesionidUsu');
-        $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
+        $sigBita        = bitacoras::orderBy('idBP','tipo')->take(1)->get();
 		$idBPSig        = $sigBita[0]->idBP+1;
 
 
@@ -61,6 +61,7 @@ class productoController extends Controller
         $precio     = $request->precio;
         $iva        = $request->iva;
         $total      = $request->total;
+        $status     = $request->status;
 
         $this->validate($request,[
 			'idPro'		=>'required|numeric',
@@ -68,6 +69,7 @@ class productoController extends Controller
             'producto'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'modelo'	=>'required|alpha_num',
             'unidad'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
+            'status'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'stock'	    =>'required|integer',
             'precio'    =>'required|numeric',
             'iva'	    =>'required|numeric',
@@ -97,6 +99,7 @@ class productoController extends Controller
         $prod->iva          = $request->iva;
         $prod->total        = $request->total;
         $prod->tipo         = 1;
+        $prod->status       = $request->status;
         $prod->idCat        = $request->idCat;
         $prod->idUb         = $request->idUb;
         $prod->idPla        = $request->idPla;
@@ -105,7 +108,7 @@ class productoController extends Controller
         $prod->save();
 
         $bPro               = new bitacoras;
-        $bPro->idBP         = $idBPSig;
+        $bPro->idBP         = $idBPSig+1;
         $bPro->fechaHora    = $fechaHoraL;
         $bPro->tipo         = 1;
         $bPro->idPro        = $request->idPro;
@@ -122,7 +125,7 @@ class productoController extends Controller
     }
 
     public function reporteProducto(){
-        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
+        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
         pl.plataforma as plataforma,m.marca as marca,p.deleted_at
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
@@ -192,6 +195,7 @@ class productoController extends Controller
         $precio     = $request->precio;
         $iva        = $request->iva;
         $total      = $request->total;
+        $status     = $request->status;
 
         $this->validate($request,[
             'idPro'		=>'required|numeric',
@@ -199,6 +203,7 @@ class productoController extends Controller
             'producto'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'modelo'	=>'required|alpha_num',
             'unidad'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
+            'status'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'stock'	    =>'required|integer',
             'precio'    =>'required|numeric',
             'iva'	    =>'required|numeric',
@@ -227,6 +232,7 @@ class productoController extends Controller
         $prod->precio       = $request->precio;
         $prod->iva          = $request->iva;
         $prod->total        = $request->total;
+        $prod->status       = $request->status;
         $prod->idCat        = $request->idCat;
         $prod->idUb         = $request->idUb;
         $prod->idPla        = $request->idPla;

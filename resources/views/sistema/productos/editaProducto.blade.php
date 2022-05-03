@@ -140,8 +140,22 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputuname"><b>Status</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                                <Select class="form-control" name='status'>
+                                    <option value="{{$productoM->status}}">{{$productoM->status}}</option>
+                                    <option value = 'Nuevo'>Nuevo</option>
+                                    <option value = 'Medio Uso'>Medio Uso</option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Categoria</b></label>
                         <div class="input-group">
@@ -158,9 +172,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Ubicacion</b></label>
                         <div class="input-group">
@@ -177,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Plataforma</b></label>
                         <div class="input-group">
@@ -194,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Marca</b></label>
                         <div class="input-group">

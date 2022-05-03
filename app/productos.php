@@ -9,6 +9,6 @@ class productos extends Model
 {
     use SoftDeletes;
     protected $primaryKey   =   'idPro';
-    protected $fillable     =   ['idPro','codigo','producto','modelo','unidad','stock','precio','iva','total','tipo','foto','idCat','idUb','idPla','idMarca'];
+    protected $fillable     =   ['idPro','codigo','producto','modelo','unidad','stock','precio','iva','total','tipo','status','foto','idCat','idUb','idPla','idMarca'];
     protected $date=['deleted_at'];
 }

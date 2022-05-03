@@ -71,7 +71,7 @@ Route::get('/restauraMarca/{idMarca}','marcaController@restauraMarca')->name('re
 Route::get('/modificaMarca/{idMarca}','marcaController@modificaMarca')->name('modificaMarca');
 Route::POST('/editaMarca','marcaController@editaMarca')->name('editaMarca');
 
-/** Marcas **/
+/** Productos **/
 Route::get('/prueba','productoController@prueba');
 Route::get('/altaProducto','productoController@altaProducto');
 Route::POST('/guardaProducto','productoController@guardaProducto')->name('guardaProducto');
@@ -80,9 +80,13 @@ Route::get('/eliminaProducto/{idPro}','productoController@eliminaProducto')->nam
 Route::get('/eFisicaProducto/{idPro}','productoController@eFisicaProducto')->name('eFisicaProducto');
 Route::get('/restauraProducto/{idPro}','productoController@restauraProducto')->name('restauraProducto');
 Route::get('/modificaProducto/{idPro}','productoController@modificaProducto')->name('modificaProducto');
+Route::get('/seeProducto/{idPro}','productoController@seeProducto')->name('seeProducto');
 Route::POST('/editaProducto','productoController@editaProducto')->name('editaProducto');
 
 /** Ventas **/
 Route::get('/venta','ventaController@venta');
 Route::get('/detalleProd','productoController@detalleProd')->name('detalleProd');
 Route::get('/productoDetalle','productoController@productoDetalle')->name('productoDetalle');
+Route::get('/detalleFechas','ventaController@detalleFechas')->name('detalleFechas');
+Route::POST('/guardaVenta','ventaController@guardaVenta')->name('guardaVenta');
+Route::get('/reporteVentas','ventaController@reporteVenta');

@@ -7,10 +7,20 @@
         {{$fechaHoraL}} -->
         <!-- {{$usuarioActivo}} -->
         <h6 class="card-subtitle">ConKalmhe</h6>
-        <form action="{{route('guardaProducto')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
+        <form action="{{route('guardaVenta')}}" class="form p-t-20" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="row">
-            <div class="col-lg-6">
+                <div class="col-lg-0">
+                    @if($errors->first('idPro'))
+                        <i>{{$errors->first('idPro')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="hidden" name="idVenta" id="idVenta" class="form-control" value="{{$idvenSig}}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Categoria</b></label>
                         <div class="input-group">
@@ -33,29 +43,95 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-receipt"></i></div>
                                 <Select class="form-control" name='producto' id="producto">
-                                    <option value="0">Seleccione Producto</option>
+                                    <option value="{{old('codigo')}}">Seleccione Producto</option>
                                 </select>
                             </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    @if($errors->first('codigo'))
-                        <i>{{$errors->first('codigo')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Codigo</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <div id="productoDetalle">
-                                <input type="text" name="codigo" id="codigo" class="form-control" value="">
+            <div id="productoDetalle">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('codigo'))
+                            <i>{{$errors->first('codigo')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Codigo</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-tag"></i></div>
+                                <input type="text" name="codigo" id="codigo" class="form-control" value="{{old('codigo')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @if($errors->first('modelo'))
+                            <i>{{$errors->first('modelo')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Modelo</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-archive"></i></div>
+                                <input type="text" name="modelo" id="modelo" class="form-control" value="{{old('modelo')}}">
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('stock'))
+                            <i>{{$errors->first('stock')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Stock</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="stock" id="stock" class="form-control" value="{{old('stock')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @if($errors->first('precio'))
+                            <i>{{$errors->first('precio')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Precio</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="precio" id="precio" class="form-control" value="{{old('precio')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('iva'))
+                            <i>{{$errors->first('iva')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>IVA</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="iva" id="iva" class="form-control" value="{{old('iva')}}">
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-lg-6">
+                    <div class="col-lg-6">
+                        @if($errors->first('total'))
+                            <i>{{$errors->first('total')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Total</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="total" id="total" class="form-control" value="{{old('total')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
                     @if($errors->first('descripcion'))
                         <i>{{$errors->first('descripcion')}}</i>
                     @endif
@@ -68,46 +144,35 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    @if($errors->first('uVenta'))
-                        <i>{{$errors->first('uVenta')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Ultima Venta</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <input type="text" name="uVenta" id="uVenta" class="form-control" value="{{old('uVenta')}}">
+            <div id="detalleFechas">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('uVenta'))
+                            <i>{{$errors->first('uVenta')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Ultima Venta</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-tag"></i></div>
+                                <input type="text" name="uVenta" id="uVenta" class="form-control" value="{{$fechaHoraL}}">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    @if($errors->first('fEntrada'))
-                        <i>{{$errors->first('fEntrada')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Fecha de Entrada</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <input type="text" name="fEntrada" id="fEntrada" class="form-control" value="{{old('fEntrada')}}">
+                    <div class="col-lg-6">
+                        @if($errors->first('fEntrada'))
+                            <i>{{$errors->first('fEntrada')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Fecha de Entrada</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-tag"></i></div>
+                                <input type="text" name="fEntrada" id="fEntrada" class="form-control" value="{{old('fEntrada')}}">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    @if($errors->first('modelo'))
-                        <i>{{$errors->first('modelo')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Modelo</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-archive"></i></div>
-                            <input type="text" name="modelo" id="modelo" class="form-control" value="{{old('modelo')}}">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-lg-6">
                     @if($errors->first('color'))
                         <i>{{$errors->first('color')}}</i>
@@ -120,22 +185,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    @if($errors->first('stock'))
-                        <i>{{$errors->first('stock')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Stock</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-money"></i></div>
-                            <input type="text" name="stock" id="stock" class="form-control" value="{{old('stock')}}">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-lg-6">
                     @if($errors->first('medida'))
                         <i>{{$errors->first('medida')}}</i>
@@ -175,38 +224,38 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        @if($errors->first('linea'))
-                            <i>{{$errors->first('linea')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>Linea</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-money"></i></div>
-                                <input type="text" name="linea" id="linea" class="form-control" value="{{old('linea')}}">
-                            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    @if($errors->first('linea'))
+                        <i>{{$errors->first('linea')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Linea</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-money"></i></div>
+                            <input type="text" name="linea" id="linea" class="form-control" value="{{old('linea')}}">
                         </div>
                     </div>
-    
-                    <div class="col-lg-6">
-                        @if($errors->first('status'))
-                            <i>{{$errors->first('status')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>Total</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-money"></i></div>
-                                <input type="text" name="status" id="status" class="form-control" value="{{old('status')}}">
-                            </div>
+                </div>
+                <div class="col-lg-6">
+                    @if($errors->first('status'))
+                        <i>{{$errors->first('status')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputuname"><b>Status</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
+                                <Select class="form-control" name='status' id="status">
+                                    <option value="0">Seleccione Status</option>
+                                    <option value = 'Nuevo'>Nuevo</option>
+                                    <option value = 'Medio Uso'>Medio Uso</option>
+                                </select>
                         </div>
                     </div>
                 </div>
             </div>
-
-            
-            
             <button type='submit' class="btn btn-success btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light m-r-10" Value='Guardar'><i class="ti-plus"></i>Guardar</button>
             <button type="reset" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light" value="Cancelar"><i class="ti-close"></i>Cancelar</button>
         </form>
@@ -230,7 +279,26 @@
             $("#productoDetalle").load('{{url('productoDetalle')}}' + '?idPro=' + this.options[this.selectedIndex].value);
             //console.log(idCat);
         });
+
+        $("#producto").click(function(){
+            $("#detalleFechas").load('{{url('detalleFechas')}}' + '?idPro=' + this.options[this.selectedIndex].value);
+            //console.log(idCat);
+        });
         
+        /*$("#categoria").change( function() {
+            var dia = $(this).val();
+            if (dia == 1){
+                $("#color").attr("required", true);
+                $("#medida").attr("required", true);
+                $("#talla").attr("required", false)
+                $("#genero").attr("required", false)
+            } else if(dia == 2) {
+                $("#color").attr("required", false);
+                $("#medida").attr("required", false);
+                $("#talla").attr("required", true)
+                $("#genero").attr("required", true)
+            }
+        });*/
     });
 </script>
 @stop

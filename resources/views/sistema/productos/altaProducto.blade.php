@@ -66,10 +66,17 @@
                         <i>{{$errors->first('unidad')}}</i>
                     @endif
                     <div class="form-group">
-                        <label for="exampleInputname"><b>Unidad</b></label>
+                        <label for="exampleInputuname"><b>Unidad</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <input type="text" name="unidad" id="unidad" class="form-control" value="{{old('unidad')}}">
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
+                                <Select class="form-control" name='unidad' id="unidad">
+                                    <option value="0">Seleccione Unidad</option>
+                                    <option value = 'Kilos'>Kilos</option>
+                                    <option value = 'Piezas'>Piezas</option>
+                                    <option value = 'Litros'>Litros</option>
+                                    <option value = 'Juegos'>Juegos</option>
+                                    <option value = 'Pares'>Pares</option>
+                                </select>
                         </div>
                     </div>
                 </div>
@@ -146,71 +153,84 @@
 
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="exampleInputuname"><b>Categoria</b></label>
+                        <label for="exampleInputuname"><b>Unidad</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                                <Select class="form-control" name='idCat'>
-                                    <option value="0">Seleccione Categoria</option>
-                                    @foreach($categorias as $ca)
-                                        @if($ca->deleted_at!="")
-                                        @else
-                                            <option value = '{{$ca->idCat}}'>{{$ca->categoria}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
+                            <Select class="form-control" name='status' id="status">
+                                <option value="0">Seleccione Status</option>
+                                <option value = 'Nuevo'>Nuevo</option>
+                                <option value = 'Medio Uso'>Medio Uso</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="exampleInputuname"><b>Categoria</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <Select class="form-control" name='idCat'>
+                                <option value="0">Seleccione Categoria</option>
+                                @foreach($categorias as $ca)
+                                    @if($ca->deleted_at!="")
+                                    @else
+                                        <option value = '{{$ca->idCat}}'>{{$ca->categoria}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Ubicacion</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-home"></i></div>
-                                <Select class="form-control" name='idUb'>
-                                    <option value="0">Seleccione Ubicacion</option>
-                                    @foreach($ubicaciones as $ub)
-                                        @if($ub->deleted_at!="")
-                                        @else
-                                            <option value = '{{$ub->idUb}}'>{{$ub->ubicacion}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <Select class="form-control" name='idUb'>
+                                <option value="0">Seleccione Ubicacion</option>
+                                @foreach($ubicaciones as $ub)
+                                    @if($ub->deleted_at!="")
+                                    @else
+                                        <option value = '{{$ub->idUb}}'>{{$ub->ubicacion}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Plataforma</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-bag"></i></div>
-                                <Select class="form-control" name='idPla'>
-                                    <option value="0">Seleccione Plataforma</option>
-                                    @foreach($plataformas as $pl)
-                                        @if($pl->deleted_at!="")
-                                        @else
-                                            <option value = '{{$pl->idPla}}'>{{$pl->plataforma}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <Select class="form-control" name='idPla'>
+                                <option value="0">Seleccione Plataforma</option>
+                                @foreach($plataformas as $pl)
+                                    @if($pl->deleted_at!="")
+                                    @else
+                                        <option value = '{{$pl->idPla}}'>{{$pl->plataforma}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Marca</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-receipt"></i></div>
-                                <Select class="form-control" name='idMarca'>
-                                    <option value="0">Seleccione Marca</option>
-                                    @foreach($marcas as $ma)
-                                        @if($ma->deleted_at!="")
-                                        @else
-                                            <option value = '{{$ma->idMarca}}'>{{$ma->marca}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <Select class="form-control" name='idMarca'>
+                                <option value="0">Seleccione Marca</option>
+                                @foreach($marcas as $ma)
+                                    @if($ma->deleted_at!="")
+                                    @else
+                                        <option value = '{{$ma->idMarca}}'>{{$ma->marca}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
