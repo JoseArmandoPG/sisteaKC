@@ -284,7 +284,7 @@
                                 <li><a href="{{URL::action('productoController@reporteProducto')}}">Productos</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Ventas <span class="label label-rouded label-warning pull-right">2</span></span></a>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">Ventas <span class="label label-rouded label-warning pull-right">2</span></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('ventaController@venta')}}">Nueva Venta</a></li>
                                 <li><a href="{{URL::action('ventaController@reporteVenta')}}">Reporte de Ventas</a></li>

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\usuarios;
+use APP\historicos;
+use APP\ventas;
+use APP\productos;
+use App\DB;
 use Session;
 
 class loginController extends Controller
@@ -43,8 +47,11 @@ class loginController extends Controller
     }
 
     public function inicio(){
+        $historicos =\DB::select("SELECT SUM(total) AS ganancias FROM historicos");
+        $ventas =\DB::select("SELECT COUNT(idVenta) AS ventas FROM ventas");
+        $productos =\DB::select("SELECT COUNT(idPro) AS nProductos FROM productos");
         if(Session::get('sesionidUsu')!=""){
-            return view('sistema.inicio');
+            return view('sistema.inicio')->with('historicos',$historicos[0])->with('ventas',$ventas[0])->with('productos',$productos[0]);
         }else{
             Session::flash('error','Es necesario loguearse antes de continuar');
             return redirect()->route('login');

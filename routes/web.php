@@ -83,6 +83,8 @@ Route::get('/modificaProducto/{idPro}','productoController@modificaProducto')->n
 Route::get('/seeProducto/{idPro}','productoController@seeProducto')->name('seeProducto');
 Route::POST('/editaProducto','productoController@editaProducto')->name('editaProducto');
 
+Route::get('/datos','productoController@datos')->name('datos');
+
 /** Ventas **/
 Route::get('/venta','ventaController@venta');
 Route::get('/detalleProd','productoController@detalleProd')->name('detalleProd');

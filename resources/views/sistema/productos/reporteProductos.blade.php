@@ -51,9 +51,10 @@
                             <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->marca}}</td>
                             <td>
-                                <a href="{{URL::action('productoController@seeProducto',['idPro'=>$pr->idPro])}}" class="opt">
+                                <a href="#seeProducto{{$pr->idPro}}" data-toggle="modal" title="Visualizar">
                                     <i class="fa fa-eye fa-lg fa-fw" title="Inhabilitar"></i>
                                 </a>
+                                @include('sistema.productos.seeProducto')
                                 @if($pr->deleted_at =="")
                                     
                                     <a href="{{URL::action('productoController@modificaProducto',['idPro'=>$pr->idPro])}} " class="opt">
@@ -76,8 +77,10 @@
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
+    
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />

@@ -9,7 +9,7 @@
                         <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>568120</h2>
+                        <h2>{{$historicos->ganancias}}</h2>
                         <p class="m-b-0">Ingresos Total</p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>1178</h2>
+                        <h2>{{$ventas->ventas}}</h2>
                         <p class="m-b-0">Ventas</p>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
                         <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>25</h2>
-                        <p class="m-b-0">Alacenes</p>
+                        <h2>{{$productos->nProductos}}</h2>
+                        <p class="m-b-0">Productos</p>
                     </div>
                 </div>
             </div>
