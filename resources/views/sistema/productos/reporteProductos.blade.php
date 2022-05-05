@@ -18,17 +18,17 @@
                             <th><b>Codigo</b></th>
                             <!-- <th><b>Imagen</b></th> -->
                             <th><b>Producto</b></th>
+                            <th><b>Categoria</b></th>
+                            <th><b>Marca</b></th>
                             <th><b>Modelo</b></th>
-                            <!-- <th><b>Unidad</b></th>-->
+                            <th><b>Ubicacion</b></th>
+                            <th><b>Plataforma</b></th>
                             <th><b>Stock</b></th>
+                            <!-- <th><b>Unidad</b></th>-->
                             <!-- <th><b>Status</b></th>
                             <th><b>Precio</b></th>
                             <th><b>Iva</b></th>
                             <th><b>Total</b></th> -->
-                            <th><b>Categoria</b></th>
-                            <th><b>Ubicacion</b></th>
-                            <th><b>Plataforma</b></th>
-                            <th><b>Marca</b></th>
                             <th><b>Operaciones</b></th>
                             @foreach($productos as $pr)
                         </tr>
@@ -37,19 +37,19 @@
                         <tr>
                             <td>{{$pr->idPro}}</td>
                             <td>{{$pr->codigo}}</td>
-                            <!-- <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td> -->
                             <td>{{$pr->producto}}</td>
+                            <td>{{$pr->categoria}}</td>
+                            <td>{{$pr->marca}}</td>
                             <td>{{$pr->modelo}}</td>
-                            <!-- <td>{{$pr->unidad}}</td> -->
+                            <td>{{$pr->ubicacion}}</td>
+                            <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->stock}}</td>
+                            <!-- <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td> -->
+                            <!-- <td>{{$pr->unidad}}</td> -->
                             <!-- <td>{{$pr->status}}</td>
                             <td>{{$pr->precio}}</td>
                             <td>{{$pr->iva}}</td>
                             <td>{{$pr->total}}</td> -->
-                            <td>{{$pr->categoria}}</td>
-                            <td>{{$pr->ubicacion}}</td>
-                            <td>{{$pr->plataforma}}</td>
-                            <td>{{$pr->marca}}</td>
                             <td>
                                 <a href="#seeProducto{{$pr->idPro}}" data-toggle="modal" title="Visualizar">
                                     <i class="fa fa-eye fa-lg fa-fw" title="Inhabilitar"></i>

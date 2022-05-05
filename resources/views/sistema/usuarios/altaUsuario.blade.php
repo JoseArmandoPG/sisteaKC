@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label for="exampleInputname"><b>Password</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-key"></i></div>
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
                             <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}">
                         </div>
                     </div>

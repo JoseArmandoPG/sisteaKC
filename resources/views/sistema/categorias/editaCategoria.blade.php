@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="exampleInputname">Categoria</label>
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-addon"><i class="ti-tag"></i></div>
                                 <input type="text" class="form-control" name="categoria" id="categoria" value="{{$categoriaM->categoria}}">
                             </div>
                         </div>

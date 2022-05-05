@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="exampleInputname">Ubicacion</label>
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-addon"><i class="ti-home"></i></div>
                                 <input type="text" class="form-control" name="ubicacion" id="ubicacion" value="{{$ubicacionM->ubicacion}}">
                             </div>
                         </div>

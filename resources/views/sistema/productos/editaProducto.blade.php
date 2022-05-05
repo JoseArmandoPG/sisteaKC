@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <label for="exampleInputname"><b>Unidad</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
                             <input type="text" name="unidad" id="unidad" class="form-control" value="{{$productoM->unidad}}">
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <label for="exampleInputuname"><b>Status</b></label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <div class="input-group-addon"><i class="ti-receipt"></i></div>
                                 <Select class="form-control" name='status'>
                                     <option value="{{$productoM->status}}">{{$productoM->status}}</option>
                                     <option value = 'Nuevo'>Nuevo</option>

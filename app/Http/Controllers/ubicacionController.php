@@ -22,8 +22,8 @@ class ubicacionController extends Controller
         $ubicacion  = $request->ubicacion;
 
         $this->validate($request,[
-            'idUb'     =>'required|numeric',
-            'ubicacion' =>'required|regex:/^[A-Z][A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
+            'idUb'      =>'required|numeric',
+            'ubicacion' =>'required|alpha_num',
         ]);
 
         $ubica            =   new ubicaciones;
@@ -73,7 +73,7 @@ class ubicacionController extends Controller
         $idUb      = $request->idUb;
 
         $this->validate($request,[
-            'ubicacion'    =>'required|regex:/^[A-Z][A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
+            'ubicacion'    =>'required|alpha_num',
         ]);
 
         $cat = ubicaciones::find($idUb);

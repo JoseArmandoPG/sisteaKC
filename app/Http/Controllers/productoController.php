@@ -254,8 +254,15 @@ class productoController extends Controller
     }
 
     public function productoDetalle(Request $request){
-        $idPro = $request->get('idPro');
-        $productos = productos::where('idPro','=',$idPro)->get();
+        $codigo = $request->get('codigo');
+        $productos =\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
+        pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+        FROM productos AS p
+        INNER JOIN categorias AS c ON p.idCat = c.idCat
+        INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
+        INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
+        INNER JOIN marcas AS m ON p.idMarca = m.idMarca
+        WHERE p.codigo = '$codigo'");
         return view('sistema.ventas.productoDetalle')->with('productos',$productos);
     }
 

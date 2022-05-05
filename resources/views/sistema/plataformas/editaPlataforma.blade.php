@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="exampleInputname">Plataforma</label>
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-addon"><i class="ti-bag"></i></div>
                                 <input type="text" class="form-control" name="plataforma" id="plataforma" value="{{$plataformaM->plataforma}}">
                             </div>
                         </div>

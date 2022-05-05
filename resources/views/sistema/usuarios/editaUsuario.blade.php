@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label for="exampleInputname">Password</label>
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-addon"><i class="ti-lock"></i></div>
                                 <input type="password" class="form-control" name="password" id="password" value="{{$usuarioM->password}}">
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label for="exampleInputname">Permisos</label>
                             <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <div class="input-group-tag"><i class="ti-user"></i></div>
                                 <input type="text" class="form-control" name="permisos" id="nombre" value="{{$usuarioM->permisos}}">
                             </div>
                         </div>
