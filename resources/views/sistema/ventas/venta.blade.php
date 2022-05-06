@@ -35,7 +35,17 @@
             </div>
             <div id="productoDetalle">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-1">
+                        @if($errors->first('idPro'))
+                            <i>{{$errors->first('idPro')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="idPro" id="idPro" class="form-control" value="{{old('idPro')}}" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
                         @if($errors->first('producto'))
                             <i>{{$errors->first('producto')}}</i>
                         @endif
@@ -148,7 +158,7 @@
                             <label for="exampleInputname"><b>Ultima Venta</b></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-calendar"></i></div>
-                                <input type="text" name="uVenta" id="uVenta" class="form-control" value="{{$fechaHoraL}}">
+                                <input type="text" name="uVenta" id="uVenta" class="form-control" value="{{$fecha}}">
                             </div>
                         </div>
                     </div>
@@ -267,12 +277,12 @@
         $("#producto").click(function(){
             $("#productoDetalle").load('{{url('productoDetalle')}}' + '?idPro=' + this.options[this.selectedIndex].value);
             //console.log(idCat);
-        });
-
-        $("#producto").click(function(){
-            $("#detalleFechas").load('{{url('detalleFechas')}}' + '?idPro=' + this.options[this.selectedIndex].value);
-            //console.log(idCat);
         });*/
+
+        $("#codigo").focusout(function(){
+            $("#detalleFechas").load('{{url('detalleFechas')}}' + '?codigo=' + $("#codigo").val());
+            //console.log(idCat);
+        });
 
         $("#codigo").focusout(function() {
             $("#productoDetalle").load('{{url('productoDetalle')}}' + '?codigo=' + $("#codigo").val());

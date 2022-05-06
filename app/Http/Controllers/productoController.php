@@ -65,9 +65,9 @@ class productoController extends Controller
 
         $this->validate($request,[
 			'idPro'		=>'required|numeric',
-            'codigo'	=>'required|alpha_num',
+            'codigo'	=>'required|string',
             'producto'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
-            'modelo'	=>'required|alpha_num',
+            'modelo'	=>'required|string',
             'unidad'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'status'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'stock'	    =>'required|integer',
@@ -125,14 +125,22 @@ class productoController extends Controller
     }
 
     public function reporteProducto(){
-        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
-        pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,
+        pl.plataforma AS plataforma,m.marca AS marca,p.deleted_at, EXTRACT(MONTH FROM p.created_at) AS mes
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
         INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
         INNER JOIN marcas AS m ON p.idMarca = m.idMarca");
-        return view('sistema.productos.reporteProductos')->with('productos',$productos);
+        
+        /** FECHA**/
+        date_default_timezone_set('America/Mexico_City');
+        $fecha = date("d-m-Y");
+        $hora = date("H:i:s");
+        $fechaHoraL = date('d-m-Y H:i:s', time());
+
+        $mes = date("m", strtotime($fecha));
+        return view('sistema.productos.reporteProductos')->with('productos',$productos)->with('mes',$mes);
     }
 
     public function eliminaProducto($idPro){
@@ -199,9 +207,9 @@ class productoController extends Controller
 
         $this->validate($request,[
             'idPro'		=>'required|numeric',
-            'codigo'	=>'required|alpha_num',
+            'codigo'	=>'required|string',
             'producto'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
-            'modelo'	=>'required|alpha_num',
+            'modelo'	=>'required|string',
             'unidad'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'status'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'stock'	    =>'required|integer',

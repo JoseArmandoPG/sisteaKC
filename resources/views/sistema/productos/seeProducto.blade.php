@@ -41,15 +41,15 @@
                                     </tr>
                                     <tr>
                                         <th>Precio</th>
-                                        <td style="text-align:left;">{{$pr->precio}}</td>
+                                        <td style="text-align:left;">{{$english_format_number=number_format($pr->precio)}}</td>
                                     </tr>
                                     <tr>
                                         <th>Iva</th>
-                                        <td style="text-align:left;">{{$pr->iva}}</td>
+                                        <td style="text-align:left;">{{$english_format_number=number_format($pr->iva)}}</td>
                                     </tr>
                                     <tr>
                                         <th>Precio + Iva</th>
-                                        <td style="text-align:left;">{{$pr->total}}</td>
+                                        <td style="text-align:left;">{{$english_format_number=number_format($pr->total)}}</td>
                                     </tr>
                                     <tr>
                                         <th>Categoria</th>

@@ -49,7 +49,7 @@ class loginController extends Controller
     public function inicio(){
         $historicos =\DB::select("SELECT SUM(total) AS ganancias FROM historicos");
         $ventas =\DB::select("SELECT COUNT(idVenta) AS ventas FROM ventas");
-        $productos =\DB::select("SELECT COUNT(idPro) AS nProductos FROM productos");
+        $productos =\DB::select("SELECT COUNT(idPro) AS nProductos, SUM(total) AS inversion FROM productos");
         if(Session::get('sesionidUsu')!=""){
             return view('sistema.inicio')->with('historicos',$historicos[0])->with('ventas',$ventas[0])->with('productos',$productos[0]);
         }else{

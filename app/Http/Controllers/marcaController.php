@@ -23,7 +23,7 @@ class marcaController extends Controller
 
         $this->validate($request,[
             'idMarca'   =>'required|numeric',
-            'marca'     =>'required|alpha_num',
+            'marca'     =>'required|string',
         ]);
 
         $mar            = new marcas;
@@ -73,7 +73,7 @@ class marcaController extends Controller
         $idMarca    = $request->idMarca;
 
         $this->validate($request,[
-            'marca'   =>'required|alpha_num',
+            'marca'   =>'required|string',
         ]);
 
         $mar            = marcas::find($idMarca);

@@ -18,7 +18,7 @@ class ventaController extends Controller
 {
     public function venta(){
         date_default_timezone_set('America/Mexico_City');
-        $fecha = date("d-m-Y");
+        $fecha = date("Y-m-d");
         $hora = date("H:i:s");
         $fechaHoraL = date('d-m-Y H:i:s', time());
         $time = time();
@@ -33,6 +33,7 @@ class ventaController extends Controller
 		return view ('sistema.ventas.venta')
                     ->with('idvenSig',$idvenSig)
                     ->with('hora',$hora)
+                    ->with('fecha',$fecha)
                     ->with('fechaHoraL',$fechaHoraL)
                     ->with('usuarioActivo',$usuarioActivo)
                     ->with('userID',$userID)
@@ -46,18 +47,19 @@ class ventaController extends Controller
         $hora = date("H:i:s");
         $fechaHoraL = date('d-m-Y H:i:s', time());
 
-        $idPro = $request->get('idPro');
-        $bitacoras =\DB::select("SELECT fechaHora, idBP
-        FROM bitacoras 
-        WHERE idPro = $idPro
-        AND tipo = 1
+        $codigo = $request->get('codigo');
+        $bitacoras =\DB::select("SELECT b.fechaHora, b.idBP, p.codigo
+        FROM bitacoras AS b
+        INNER JOIN productos AS p
+        WHERE p.codigo = '$codigo'
+        AND b.tipo = 1
         ORDER BY idBP DESC
         LIMIT 1");
         $historicos =\DB::select("SELECT h.fechaHora, h.idBV
         FROM historicos AS h
         INNER JOIN ventas AS v ON h.idVenta = v.idVenta
         INNER JOIN productos AS p ON v.idPro = p.idPro
-        WHERE p.idPro = $idPro 
+        WHERE p.codigo = '$codigo'
         ORDER BY h.idBV DESC
         LIMIT 1");
         return view('sistema.ventas.detalleFechas')->with('bitacoras',$bitacoras)->with('historicos',$historicos);
@@ -75,7 +77,7 @@ class ventaController extends Controller
 
         $idVenta        = $request->idVenta;
         $categoria      = $request->categoria;
-        $producto       = $request->producto;
+        $idPro          = $request->idPro;
         $codigo         = $request->codigo;
         $modelo         = $request->modelo;
         $stock          = $request->stock;
@@ -93,7 +95,7 @@ class ventaController extends Controller
         $status         = $request->status;
 
         $this->validate($request,[
-			'descripcion'   =>'required|alpha_num',
+			'descripcion'   =>'required|string',
 		]);
 
         if($uVenta == ""){
@@ -116,14 +118,14 @@ class ventaController extends Controller
         $vent->talla        = $request->talla;
         $vent->linea        = $request->linea;
         $vent->status       = $request->status;
-        $vent->idPro        = $request->producto;
+        $vent->idPro        = $request->idPro;
         $vent->save();
 
         $bPro               = new bitacoras;
         $bPro->idBP         = $idBPSig;
         $bPro->fechaHora    = $fechaHoraL;
         $bPro->tipo         = 3;
-        $bPro->idPro        = $request->producto;
+        $bPro->idPro        = $request->idPro;
         $bPro->idUSu        = $userID;
         $bPro->save();
 
@@ -137,7 +139,7 @@ class ventaController extends Controller
         $bVen->idUsu        = $userID;
         $bVen->save();
 
-        $venPro             = productos::find($producto);
+        $venPro             = productos::find($idPro);
         $venPro->stock      = $request->stock-1;
         $venPro->save();
         

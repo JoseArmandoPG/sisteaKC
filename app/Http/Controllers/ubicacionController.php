@@ -23,7 +23,7 @@ class ubicacionController extends Controller
 
         $this->validate($request,[
             'idUb'      =>'required|numeric',
-            'ubicacion' =>'required|alpha_num',
+            'ubicacion' =>'required|string',
         ]);
 
         $ubica            =   new ubicaciones;
@@ -73,7 +73,7 @@ class ubicacionController extends Controller
         $idUb      = $request->idUb;
 
         $this->validate($request,[
-            'ubicacion'    =>'required|alpha_num',
+            'ubicacion'    =>'required|string',
         ]);
 
         $cat = ubicaciones::find($idUb);

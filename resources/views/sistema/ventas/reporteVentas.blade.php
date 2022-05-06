@@ -43,9 +43,9 @@
                             <td>{{$his->stock}}</td>
                             <td>{{$his->ultimaVenta}}</td>
                             <td>{{$his->fechaEntrada}}</td>
-                            <td>{{$his->precio}}</td>
-                            <td>{{$his->iva}}</td>
-                            <td>{{$his->total}}</td>
+                            <td>{{$english_format_number=number_format($his->precio)}}</td>
+                            <td>{{$english_format_number=number_format($his->iva)}}</td>
+                            <td>{{$english_format_number=number_format($his->total)}}</td>
                             <td>{{$his->color}}</td>
                             <td>{{$his->medida}}</td>
                             <td>{{$his->genero}}</td>

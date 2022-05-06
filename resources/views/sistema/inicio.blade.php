@@ -9,7 +9,7 @@
                         <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>{{$historicos->ganancias}}</h2>
+                        <h2>{{$english_format_number=number_format($historicos->ganancias)}}</h2>
                         <p class="m-b-0">Ingresos Total</p>
                     </div>
                 </div>
@@ -45,11 +45,11 @@
             <div class="card p-30">
                 <div class="media">
                     <div class="media-left meida media-middle">
-                        <span><i class="fa fa-user f-s-40 color-danger"></i></span>
+                        <span><i class="fa fa-usd f-s-40 color-danger"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>847</h2>
-                        <p class="m-b-0">Clientes</p>
+                        <h2>{{$english_format_number=number_format($productos->inversion)}}</h2>
+                        <p class="m-b-0">Inventario Total($)</p>
                     </div>
                 </div>
             </div>

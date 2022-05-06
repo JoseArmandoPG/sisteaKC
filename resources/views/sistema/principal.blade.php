@@ -267,21 +267,21 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-plus"></i><span class="hide-menu">Altas <span class="label label-rouded label-success pull-right">6</span></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('categoriaController@altaCategoria')}}">Categoria</a></li>
-                                <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
-                                <li><a href="{{URL::action('plataformaController@altaPlataforma')}}">Plataforma</a></li>
-                                <li><a href="{{URL::action('usuarioController@altaUsuario')}}">Usuario</a></li>
                                 <li><a href="{{URL::action('marcaController@altaMarca')}}">Marca</a></li>
+                                <li><a href="{{URL::action('plataformaController@altaPlataforma')}}">Plataforma</a></li>
                                 <li><a href="{{URL::action('productoController@altaProducto')}}">Producto</a></li>
+                                <li><a href="{{URL::action('ubicacionController@altaUbicacion')}}">Ubicacion</a></li>
+                                <li><a href="{{URL::action('usuarioController@altaUsuario')}}">Usuario</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-clipboard"></i><span class="hide-menu">Inventario <span class="label label-rouded label-info pull-right">6</span></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{URL::action('categoriaController@reporteCategoria')}}">Categorias</a></li>
-                                <li><a href="{{URL::action('ubicacionController@reporteUbicacion')}}">Ubicaciones</a></li>
-                                <li><a href="{{URL::action('plataformaController@reportePlataforma')}}">Plataformas</a></li>
-                                <li><a href="{{URL::action('usuarioController@reporteUsuario')}}">Usuarios </a></li>
                                 <li><a href="{{URL::action('marcaController@reporteMarca')}}">Marcas</a></li>
+                                <li><a href="{{URL::action('plataformaController@reportePlataforma')}}">Plataformas</a></li>
                                 <li><a href="{{URL::action('productoController@reporteProducto')}}">Productos</a></li>
+                                <li><a href="{{URL::action('ubicacionController@reporteUbicacion')}}">Ubicaciones</a></li>
+                                <li><a href="{{URL::action('usuarioController@reporteUsuario')}}">Usuarios </a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-dollar"></i><span class="hide-menu">Ventas <span class="label label-rouded label-warning pull-right">2</span></span></a>

@@ -4,6 +4,7 @@
         <div class="card-body">
             <h4 class="card-title text-primary">Productos</h4>
             <h6 class="card-subtitle">ConKalmhe</h6>
+            <!-- {{$mes}} -->
             <div class="input-group input-group-sm mb-3">
                 <input id="entradafilter" type="text" class="form-control">
                 <div class="input-group-prepend">
@@ -24,6 +25,7 @@
                             <th><b>Ubicacion</b></th>
                             <th><b>Plataforma</b></th>
                             <th><b>Stock</b></th>
+                            <th><b>Condicion</b></th>
                             <!-- <th><b>Unidad</b></th>-->
                             <!-- <th><b>Status</b></th>
                             <th><b>Precio</b></th>
@@ -44,6 +46,16 @@
                             <td>{{$pr->ubicacion}}</td>
                             <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->stock}}</td>
+                            @php
+                                $dif = $mes - $pr->mes;
+                                if($dif <= 2)
+                                    echo "<td><b class='bg-success' style='color:#000000;'>Nuevo </b></td>";
+                                elseif($dif > 2 && $dif <= 3)
+                                    echo "<td><b class='bg-warning' style='color:#000000;'>Medio Uso </b></td>";
+                                elseif($dif > 3)
+                                    echo "<td><b class='bg-danger' style='color: #000000;'>Resagado </b></td>";
+                            @endphp
+                            
                             <!-- <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td> -->
                             <!-- <td>{{$pr->unidad}}</td> -->
                             <!-- <td>{{$pr->status}}</td>
