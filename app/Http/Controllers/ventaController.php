@@ -55,6 +55,7 @@ class ventaController extends Controller
         AND b.tipo = 1
         ORDER BY idBP DESC
         LIMIT 1");
+        
         $historicos =\DB::select("SELECT h.fechaHora, h.idBV
         FROM historicos AS h
         INNER JOIN ventas AS v ON h.idVenta = v.idVenta

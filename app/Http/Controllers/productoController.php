@@ -120,9 +120,9 @@ class productoController extends Controller
         return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
     }
 
-    public function prueba(){
+    /*public function prueba(){
 		return view ('sistema.productos.prueba');
-    }
+    }*/
 
     public function reporteProducto(){
         $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,
@@ -290,5 +290,29 @@ class productoController extends Controller
         $codigo = $request->get('codigo');
         $productos = productos::where('codigo','=',$codigo)->get();
         return view('sistema.productos.datos')->with('productos',$productos);
+    }
+
+    public function busqueda(Request $request){
+        $codigo = $request->get('codigo');
+        if(isset($codigo)){
+            $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
+            pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+            FROM productos AS p
+            INNER JOIN categorias AS c ON p.idCat = c.idCat
+            INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
+            INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
+            INNER JOIN marcas AS m ON p.idMarca = m.idMarca
+            WHERE p.codigo LIKE '%$codigo%'");
+        }else{
+            $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
+            pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+            FROM productos AS p
+            INNER JOIN categorias AS c ON p.idCat = c.idCat
+            INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
+            INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
+            INNER JOIN marcas AS m ON p.idMarca = m.idMarca
+            WHERE p.codigo LIKE '%%'");
+        }
+		return view ('sistema.productos.busqueda')->with('productos',$productos);
     }
 }

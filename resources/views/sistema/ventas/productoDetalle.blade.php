@@ -1,16 +1,16 @@
 @foreach($productos as $cpro)
     <div class="row">
-        <div class="col-lg-1">
+        <div class="col-lg-0">
             @if($errors->first('idPro'))
                 <i>{{$errors->first('idPro')}}</i>
             @endif
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" name="idPro" id="idPro" class="form-control" value="{{$cpro->idPro}}" readonly="readonly">
+                    <input type="hidden" name="idPro" id="idPro" class="form-control" value="{{$cpro->idPro}}" readonly="readonly">
                 </div>
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-6">
             @if($errors->first('producto'))
                 <i>{{$errors->first('producto')}}</i>
             @endif

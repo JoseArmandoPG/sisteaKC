@@ -82,8 +82,8 @@ Route::get('/restauraProducto/{idPro}','productoController@restauraProducto')->n
 Route::get('/modificaProducto/{idPro}','productoController@modificaProducto')->name('modificaProducto');
 Route::get('/seeProducto/{idPro}','productoController@seeProducto')->name('seeProducto');
 Route::POST('/editaProducto','productoController@editaProducto')->name('editaProducto');
-
-Route::get('/datos','productoController@datos')->name('datos');
+Route::POST('/buscaProducto','productoController@buscaProducto')->name('buscaProducto');
+Route::get('/busqueda','productoController@busqueda')->name('busqueda');
 
 /** Ventas **/
 Route::get('/venta','ventaController@venta');
