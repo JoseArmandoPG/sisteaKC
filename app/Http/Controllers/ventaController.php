@@ -155,7 +155,8 @@ class ventaController extends Controller
         FROM historicos AS b
         INNER JOIN ventas AS v ON b.idVenta = v.idVenta
         INNER JOIN productos AS p ON v.idPro = p.idPro
-        INNER JOIN usuarios AS u ON b.idUsu = u.idUsu");
+        INNER JOIN usuarios AS u ON b.idUsu = u.idUsu
+        ORDER BY b.idBV ASC");
         return view('sistema.ventas.reporteVentas')->with('historicos',$historicos);
     }
 }

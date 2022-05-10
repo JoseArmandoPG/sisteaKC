@@ -38,7 +38,8 @@ class marcaController extends Controller
 
     public function reporteMarca(){
         $marcas=\DB::select("SELECT idMarca,marca,deleted_at
-        FROM marcas");
+        FROM marcas
+        ORDER BY idMarca ASC");
         return view('sistema.marcas.reporteMarcas')->with('marcas',$marcas);
     }
 

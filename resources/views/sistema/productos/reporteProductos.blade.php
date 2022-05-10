@@ -25,7 +25,7 @@
                             <th><b>Ubicacion</b></th>
                             <th><b>Plataforma</b></th>
                             <th><b>Stock</b></th>
-                            <th><b>Condicion</b></th>
+                            <th><b>Ultimo Movimiento</b></th>
                             <!-- <th><b>Unidad</b></th>-->
                             <!-- <th><b>Status</b></th>
                             <th><b>Precio</b></th>
@@ -47,13 +47,16 @@
                             <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->stock}}</td>
                             @php
+                                $campo = $pr->updated_at;
+                                $date = date_create($campo);
+                                $fecha = date_format($date, 'd-m-Y');
                                 $dif = $mes - $pr->mes;
                                 if($dif <= 2)
-                                    echo "<td><b class='bg-success' style='color:#000000;'>Nuevo </b></td>";
+                                    echo "<td><b class='bg-success' style='color:#000000;'>$fecha </b></td>";
                                 elseif($dif > 2 && $dif <= 3)
-                                    echo "<td><b class='bg-warning' style='color:#000000;'>Medio Uso </b></td>";
+                                    echo "<td><b class='bg-warning' style='color:#000000;'>$fecha </b></td>";
                                 elseif($dif > 3)
-                                    echo "<td><b class='bg-danger' style='color: #000000;'>Resagado </b></td>";
+                                    echo "<td><b class='bg-danger' style='color: #000000;'>$fecha </b></td>";
                             @endphp
                             
                             <!-- <td><img src ="{{asset('archivos/'.$pr->foto)}}" height = 60 width = 60></td> -->

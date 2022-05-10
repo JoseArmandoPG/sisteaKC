@@ -47,7 +47,8 @@ class usuarioController extends Controller
 
     public function reporteUsuario(){
         $usuarios=\DB::select("SELECT idUsu,usuario,permisos,nombre,deleted_at
-        FROM usuarios");
+        FROM usuarios
+        ORDER BY idUsu ASC");
         return view('sistema.usuarios.reporteUsuarios')->with('usuarios',$usuarios);
     }
 

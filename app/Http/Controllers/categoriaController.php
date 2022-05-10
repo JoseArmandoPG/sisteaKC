@@ -38,7 +38,8 @@ class categoriaController extends Controller
 
     public function reporteCategoria(){
         $categorias=\DB::select("SELECT idCat,categoria,deleted_at
-        FROM categorias");
+        FROM categorias
+        ORDER BY idCat ASC");
         return view('sistema.categorias.reporteCategorias')->with('categorias',$categorias);
     }
 

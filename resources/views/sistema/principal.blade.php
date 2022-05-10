@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/kc1_ccexpress.ico')}}">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
 
     <!-- Bootstrap Core CSS -->
@@ -52,7 +52,7 @@
                     <a class="navbar-brand" href="{{URL::action('loginController@inicio')}}">
                         <!-- Logo icon -->
                         <!-- <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b> -->
-                        <b><img src="images/kc1_ccexpress (2).png" alt="homepage" class="dark-logo" with="21" height="21" /></b>
+                        <b><img src="images/kc1_ccexpress.png" alt="homepage" class="dark-logo" with="21" height="21" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <!-- <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span> -->
@@ -290,7 +290,10 @@
                                 <li><a href="{{URL::action('ventaController@reporteVenta')}}">Reporte de Ventas</a></li>
                             </ul>
                         </li>
-                        <li> <a href="{{URL::action('productoController@busqueda')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Producto</span></a></li>
+                        <!-- <li> <a href="{{URL::action('productoController@busqueda')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Producto</span></a></li> -->
+                        @if(Session::get('sesionTipo')=='admin')
+                        <li> <a href="{{URL::action('productoController@busqueda')}}"><i class="fa fa-bar-chart"></i><span class="hide-menu">Grafica</span></a></li>
+                        @endif
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -306,7 +309,7 @@
                     <h3 class="text-primary">Panel</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{{URL::action('loginController@inicio')}}">Inicio</a></li>
                         <li class="breadcrumb-item active">Panel</li>
                     </ol>
                 </div>
@@ -348,14 +351,14 @@
     <script src="{{asset('js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
 
 
-    <!-- <script src="{{asset('js/lib/chartist/chartist.min.js')}}"></script>
+    <script src="{{asset('js/lib/chartist/chartist.min.js')}}"></script>
     <script src="{{asset('js/lib/chartist/chartist-plugin-tooltip.min.js')}}"></script>
-    <script src="{{asset('js/lib/chartist/chartist-init.js')}}"></script> -->
+    <script src="{{asset('js/lib/chartist/chartist-init.js')}}"></script>
 
     <!-- Amchart -->
-    <!-- <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
+    <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
     <script src="{{asset('js/lib/morris-chart/morris.js')}}"></script>
-    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script> -->
+    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script>
 
 
 	<script src="{{asset('js/lib/calendar-2/moment.latest.min.js')}}"></script>
@@ -383,6 +386,10 @@
     <script src="{{asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('js/lib/datatables/datatables-init.js')}}"></script>
+
+    <!-- Echart -->
+    <script src="{{asset('js/lib/echart/echarts.js')}}"></script>
+    <script src="{{asset('js/lib/echart/echarts-init.js')}}"></script>
 
     <!--Custom JavaScript -->
     <script src="{{asset('js/custom.min.js')}}"></script>

@@ -247,10 +247,11 @@
             var precio = $("#precio").val();
             var iva=parseFloat((parseInt(precio))*.16).toFixed(2);
             $("#iva").val(iva);
+            var stock = $("#stock").val();
             //var ivaT = $("#iva").val();
             //var precioT = $("#precio").val();
             //var tot=parseFloat(paserInt(precioT)+parseInt(ivaT));
-            $("#total").val(parseInt(precio)+parseInt(iva));
+            $("#total").val((parseInt(precio)+parseInt(iva)) * stock);
             //$('#total').attr("value", $("#precio").val() +  $("#iva").val());
         });
 

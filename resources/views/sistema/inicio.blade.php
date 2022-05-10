@@ -61,8 +61,26 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Extra Area Chart</h4>
-                    <div id="extra-area-chart"></div>
+                    <!-- <h4 class="card-title">Extra Area Chart</h4>
+                    <div id="extra-area-chart"></div> -->
+                    <h4 class="card-title">Productos mas Vendidos</h4>
+                    <div id="main" style="width:100%; height:300px"></div>
+                    @php
+                        $i = 0;
+                        foreach($graficas as $gra){
+                            $count[$i] = $gra->cantidad;
+                            $label[$i] = $gra->producto;
+
+                            $i++;
+                        }
+
+                        $total = $count[0] + $count[1] + $count[2] + $count[3] + $count[4];
+                        $p1 = $count[0] * 100 / $total;
+                        $p2 = $count[1] * 100 / $total;
+                        $p3 = $count[2] * 100 / $total;
+                        $p4 = $count[3] * 100 / $total;
+                        $p5 = $count[4] * 100 / $total;
+                    @endphp
                 </div>
             </div>
         </div>
@@ -72,29 +90,29 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body browser">
-                    <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
+                    <p class="f-w-600">{{$label[0]}} <span class="pull-right">{{sprintf('%.2f', $p1)}}%</span></p>
                     <div class="progress ">
-                        <div role="progressbar" style="width: 85%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                        <div role="progressbar" style="width: {{sprintf('%.2f', $p1)}}%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">{{sprintf('%.2f', $p1)}}% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">iBooks<span class="pull-right">90%</span></p>
+                    <p class="m-t-30 f-w-600">{{$label[1]}}<span class="pull-right">{{sprintf('%.2f', $p2)}}%</span></p>
                     <div class="progress">
-                        <div role="progressbar" style="width: 90%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                        <div role="progressbar" style="width: {{sprintf('%.2f', $p2)}}%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">{{sprintf('%.2f', $p2)}}% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">iPhone<span class="pull-right">65%</span></p>
+                    <p class="m-t-30 f-w-600">{{$label[2]}}<span class="pull-right">{{sprintf('%.2f', $p3)}}%</span></p>
                     <div class="progress">
-                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                        <div role="progressbar" style="width: {{sprintf('%.2f', $p3)}}%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">{{sprintf('%.2f', $p3)}}% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">Samsung<span class="pull-right">65%</span></p>
+                    <p class="m-t-30 f-w-600">{{$label[3]}}<span class="pull-right">{{sprintf('%.2f', $p4)}}%</span></p>
                     <div class="progress">
-                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                        <div role="progressbar" style="width: {{sprintf('%.2f', $p4)}}%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">{{sprintf('%.2f', $p4)}}% Complete</span> </div>
                     </div>
 
-					<p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
+					<p class="m-t-30 f-w-600">{{$label[4]}}<span class="pull-right">{{sprintf('%.2f', $p5)}}%</span></p>
                     <div class="progress m-b-30">
-                        <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                        <div role="progressbar" style="width: {{sprintf('%.2f', $p5)}}%; height:8px;" class="progress-bar bg-primary wow animated progress-animated"> <span class="sr-only">{{sprintf('%.2f', $p5)}}% Complete</span> </div>
                     </div>
                 </div>
             </div>
@@ -370,4 +388,201 @@
             </div>
         </div>
     </div>
+    <!-- Echart -->
+    <script src="{{asset('js/lib/echart/echarts.js')}}"></script>
+    <!-- <script src="{{asset('js/lib/echart/echarts-init.js')}}"></script>s -->
+    <!-- <script src="{{asset('js/lib/echart/dashboard1-init.js')}}"></script> -->
+    <script type="text/javascript">
+        var chartDom = document.getElementById('main');
+        // var myChart = echarts.init(chartDom, 'dark');
+        var myChart = echarts.init(chartDom);
+        var option;
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['{{$label[0]}}', '{{$label[1]}}', '{{$label[2]}}', '{{$label[3]}}', '{{$label[4]}}'],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Cantidad',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: [
+                        {
+                            value:{{$count[0]}},
+                            itemStyle:{
+                                color:'#FC6180'
+                            } 
+                        },
+                        {
+                            value:{{$count[1]}},
+                            itemStyle:{
+                                color:'#62D1F3'
+                            }
+                        },
+                        {
+                            value:{{$count[2]}},
+                            itemStyle:{
+                                color:'#26DAD2'
+                            }
+                        },
+                        {
+                            value:{{$count[3]}},
+                            itemStyle:{
+                                color:'#FFB64D'
+                            }
+                        },
+                        {
+                            value:{{$count[4]}},
+                            itemStyle:{
+                                color:'#4680FF'
+                            }
+                        }
+                    ],
+                    //color: ['#fc6180','#62D1F3','#26DAD2','#FFB64D','#26DAD2']
+                }
+            ]
+        };
+
+        /** DOUGHNUT BORDER RADIOS OPTION **/
+        /*option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: 'Campeonatos',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['50%', '50%'],
+                    avoidLabelOverlap: false,
+                    //height: 550,
+                    top: '1%',
+                    itemStyle: {
+                        borderRadius: 0,
+                        //borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                        show: true,
+                        fontSize: '25',
+                        fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 13, name: 'America'},
+                        { value: 12, name: 'Guadalajara' },
+                        { value: 10, name: 'Toluca' },
+                        { value: 9, name: 'Cruz Azul' },
+                        { value: 8, name: 'Leon' },
+                        { value: 7, name: 'UNAM' },
+                        { value: 7, name: 'Tigres' }
+                    ],
+                    color: [
+                    "rgba(240, 235, 154, 0.8)",
+                    "rgba(255, 0, 0, 0.8)",
+                    "rgba(213, 55, 65, 0.8)",
+                    "rgba(0, 27, 91, 0.8)",
+                    "rgba(23, 139, 59, 0.8)",
+                    "rgba(203, 171, 87, 0.8)",
+                    "rgba(251, 176, 52, 0.8)"
+                    ]
+                },
+                {
+                    name: 'Campeonatos',
+                    type: 'pie',
+                    radius: '50%',
+                    center: ['50%', '50%'],
+                    // height: 550,
+                    top: '1%',
+                    data: [
+                        { value: 13, name: 'America'},
+                        { value: 12, name: 'Guadalajara' },
+                        { value: 10, name: 'Toluca' },
+                        { value: 9, name: 'Cruz Azul' },
+                        { value: 8, name: 'Leon' },
+                        { value: 7, name: 'UNAM' },
+                        { value: 7, name: 'Tigres' }
+                    ],
+                    color: [
+                    "rgba(240, 235, 154, 0.8)",
+                    "rgba(255, 0, 0, 0.8)",
+                    "rgba(213, 55, 65, 0.8)",
+                    "rgba(0, 27, 91, 0.8)",
+                    "rgba(23, 139, 59, 0.8)",
+                    "rgba(203, 171, 87, 0.8)",
+                    "rgba(251, 176, 52, 0.8)"
+                    ]
+                },
+                {
+                    name: 'Campeonatos',
+                    type: 'pie',
+                    radius: [8, 250],
+                    center: ['50%', '50%'],
+                    roseType: 'area',
+                    // height: 150,
+                    top: '1%',
+                    itemStyle: {
+                        borderRadius: 8
+                    },
+                    data: [
+                        { value: 13, name: 'America'},
+                        { value: 12, name: 'Guadalajara' },
+                        { value: 10, name: 'Toluca' },
+                        { value: 9, name: 'Cruz Azul' },
+                        { value: 8, name: 'Leon' },
+                        { value: 7, name: 'UNAM' },
+                        { value: 7, name: 'Tigres' }
+                    ],
+                    color: [
+                    "rgba(240, 235, 154, 0.8)",
+                    "rgba(255, 0, 0, 0.8)",
+                    "rgba(213, 55, 65, 0.8)",
+                    "rgba(0, 27, 91, 0.8)",
+                    "rgba(23, 139, 59, 0.8)",
+                    "rgba(203, 171, 87, 0.8)",
+                    "rgba(251, 176, 52, 0.8)"
+                    ]
+                }
+            ]
+        };*/
+
+        option && myChart.setOption(option);
+
+    </script>
 @stop
