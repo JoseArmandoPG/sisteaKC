@@ -73,43 +73,4 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4">
-            @if($errors->first('precio'))
-                <i>{{$errors->first('precio')}}</i>
-            @endif
-            <div class="form-group">
-                <label for="exampleInputname"><b>Precio</b></label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="ti-money"></i></div>
-                    <input type="text" name="precio" id="precio" class="form-control" value="{{$cpro->precio}}">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            @if($errors->first('iva'))
-                <i>{{$errors->first('iva')}}</i>
-            @endif
-            <div class="form-group">
-                <label for="exampleInputname"><b>IVA</b></label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="ti-money"></i></div>
-                    <input type="text" name="iva" id="iva" class="form-control" value="{{$cpro->iva}}">
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            @if($errors->first('total'))
-                <i>{{$errors->first('total')}}</i>
-            @endif
-            <div class="form-group">
-                <label for="exampleInputname"><b>Total</b></label>
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="ti-money"></i></div>
-                    <input type="text" name="total" id="total" class="form-control" value="{{$cpro->total}}">
-                </div>
-            </div>
-        </div>
-    </div>
 @endforeach

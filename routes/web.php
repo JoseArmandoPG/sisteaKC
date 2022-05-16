@@ -90,5 +90,6 @@ Route::get('/venta','ventaController@venta');
 Route::get('/detalleProd','productoController@detalleProd')->name('detalleProd');
 Route::get('/productoDetalle','productoController@productoDetalle')->name('productoDetalle');
 Route::get('/detalleFechas','ventaController@detalleFechas')->name('detalleFechas');
+Route::get('/detallePrecio','ventaController@detallePrecio')->name('detallePrecio');
 Route::POST('/guardaVenta','ventaController@guardaVenta')->name('guardaVenta');
 Route::get('/reporteVentas','ventaController@reporteVenta');

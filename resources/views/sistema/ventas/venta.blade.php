@@ -108,45 +108,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        @if($errors->first('precio'))
-                            <i>{{$errors->first('precio')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>Precio</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-money"></i></div>
-                                <input type="text" name="precio" id="precio" class="form-control" value="{{old('precio')}}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        @if($errors->first('iva'))
-                            <i>{{$errors->first('iva')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>IVA</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-money"></i></div>
-                                <input type="text" name="iva" id="iva" class="form-control" value="{{old('iva')}}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        @if($errors->first('total'))
-                            <i>{{$errors->first('total')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>Total</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-money"></i></div>
-                                <input type="text" name="total" id="total" class="form-control" value="{{old('total')}}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div id="detalleFechas">
                 <div class="row">
@@ -176,16 +137,69 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    @if($errors->first('descripcion'))
-                        <i>{{$errors->first('descripcion')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Descripcion</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-notepad"></i></div>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{old('descripcion')}}">
+            <div id="detallePrecio">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('cantidad'))
+                            <i>{{$errors->first('cantidad')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Cantidad</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="cantidad" id="cantidad" class="form-control" value="{{old('cantidad')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @if($errors->first('precio'))
+                            <i>{{$errors->first('precio')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Precio</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="precio" id="precio" class="form-control" value="{{old('precio')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        @if($errors->first('importe'))
+                            <i>{{$errors->first('importe')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Importe</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="importe" id="importe" class="form-control" value="{{old('importe')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        @if($errors->first('iva'))
+                            <i>{{$errors->first('iva')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>IVA</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="iva" id="iva" class="form-control" value="{{old('iva')}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        @if($errors->first('total'))
+                            <i>{{$errors->first('total')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Total</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="total" id="total" class="form-control" value="{{old('total')}}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,6 +269,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @if($errors->first('descripcion'))
+                        <i>{{$errors->first('descripcion')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Descripcion</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-notepad"></i></div>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{old('descripcion')}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button type='submit' class="btn btn-success btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light m-r-10" Value='Guardar'><i class="ti-plus"></i>Guardar</button>
             <button type="reset" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light" value="Cancelar"><i class="ti-close"></i>Cancelar</button>
         </form>
@@ -286,6 +314,24 @@
 
         $("#codigo").focusout(function() {
             $("#productoDetalle").load('{{url('productoDetalle')}}' + '?codigo=' + $("#codigo").val());
+        });
+
+        $("#codigo").focusout(function() {
+            $("#detallePrecio").load('{{url('detallePrecio')}}' + '?codigo=' + $("#codigo").val());
+        });
+
+        $("#cantidad").keyup(function(){
+            var precio = $("#precio").val();
+            var cantidad = $("#cantidad").val();
+            $("#importe").val((parseInt(cantidad)) * parseInt(precio));
+            var importe = $("#importe").val();
+            var iva=parseFloat((parseInt(importe))*.16).toFixed(2);
+            $("#iva").val(iva);
+            //var ivaT = $("#iva").val();
+            //var precioT = $("#precio").val();
+            //var tot=parseFloat(paserInt(precioT)+parseInt(ivaT));
+            $("#total").val((parseInt(importe)+parseInt(iva)));
+            //$('#total').attr("value", $("#precio").val() +  $("#iva").val());
         });
         
         /*$("#categoria").change( function() {

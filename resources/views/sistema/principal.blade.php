@@ -25,7 +25,7 @@
     <link href="{{asset('css/lib/calendar2/pignose.calendar.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/lib/owl.carousel.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/lib/owl.theme.default.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/lib/chartist/chartist.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('css/lib/chartist/chartist.min.css')}}" rel="stylesheet"> -->
     <link href="{{asset('css/helper.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -350,15 +350,15 @@
     <script src="{{asset('js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
 
-
-    <script src="{{asset('js/lib/chartist/chartist.min.js')}}"></script>
+    
+    <!-- <script src="{{asset('js/lib/chartist/chartist.min.js')}}"></script>
     <script src="{{asset('js/lib/chartist/chartist-plugin-tooltip.min.js')}}"></script>
-    <script src="{{asset('js/lib/chartist/chartist-init.js')}}"></script>
+    <script src="{{asset('js/lib/chartist/chartist-init.js')}}"></script> -->
 
     <!-- Amchart -->
-    <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
+    <!-- <script src="{{asset('js/lib/morris-chart/raphael-min.js')}}"></script>
     <script src="{{asset('js/lib/morris-chart/morris.js')}}"></script>
-    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script>
+    <script src="{{asset('js/lib/morris-chart/dashboard1-init.js')}}"></script> -->
 
 
 	<script src="{{asset('js/lib/calendar-2/moment.latest.min.js')}}"></script>
