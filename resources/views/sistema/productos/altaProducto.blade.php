@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     @if($errors->first('codigo'))
                         <i>{{$errors->first('codigo')}}</i>
                     @endif
@@ -34,21 +34,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    @if($errors->first('producto'))
+                        <i>{{$errors->first('producto')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Producto</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-wallet"></i></div>
+                            <input type="text" name="producto" id="producto" class="form-control" value="{{old('producto')}}">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="datos">
                 <div class="row">
-                    <div class="col-lg-6">
-                        @if($errors->first('producto'))
-                            <i>{{$errors->first('producto')}}</i>
-                        @endif
-                        <div class="form-group">
-                            <label for="exampleInputname"><b>Producto</b></label>
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-wallet"></i></div>
-                                <input type="text" name="producto" id="producto" class="form-control" value="{{old('producto')}}">
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-6">
                         @if($errors->first('modelo'))
                             <i>{{$errors->first('modelo')}}</i>
@@ -61,8 +61,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-6">
                         @if($errors->first('unidad'))
                             <i>{{$errors->first('unidad')}}</i>
@@ -82,20 +80,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-6">
                         @if($errors->first('stock'))
                             <i>{{$errors->first('stock')}}</i>
                         @endif
                         <div class="form-group">
-                            <label for="exampleInputname"><b>Stock</b></label>
+                            <label for="exampleInputname"><b>Cantidad</b></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-archive"></i></div>
                                 <input type="text" name="stock" id="stock" class="form-control" value="{{old('stock')}}">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-6">
                         @if($errors->first('precio'))
                             <i>{{$errors->first('precio')}}</i>
@@ -108,7 +106,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        @if($errors->first('importe'))
+                            <i>{{$errors->first('importe')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Importe</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="importe" id="importe" class="form-control" value="{{old('importe')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
                         @if($errors->first('iva'))
                             <i>{{$errors->first('iva')}}</i>
                         @endif
@@ -120,9 +132,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         @if($errors->first('total'))
                             <i>{{$errors->first('total')}}</i>
                         @endif
@@ -134,6 +144,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="exampleInputuname"><b>Status</b></label>
@@ -147,9 +159,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label for="exampleInputuname"><b>Categoria</b></label>
                             <div class="input-group">
@@ -166,7 +176,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="exampleInputuname"><b>Ubicacion</b></label>
                             <div class="input-group">
@@ -183,7 +195,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="exampleInputuname"><b>Plataforma</b></label>
                             <div class="input-group">
@@ -200,7 +212,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="form-group">
                             <label for="exampleInputuname"><b>Marca</b></label>
                             <div class="input-group">
@@ -243,16 +255,15 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $("#precio").keyup(function(){
+        $("#stock,#precio").keyup(function(){
             var precio = $("#precio").val();
-            var iva=parseFloat((parseInt(precio))*.16).toFixed(2);
+            var cantidad = $("#stock").val();
+            $("#importe").val((parseInt(cantidad)) * parseInt(precio));
+            var importe = $("#importe").val();
+            var iva=parseFloat((parseInt(importe))*.16).toFixed(2);
             $("#iva").val(iva);
-            var stock = $("#stock").val();
-            //var ivaT = $("#iva").val();
-            //var precioT = $("#precio").val();
-            //var tot=parseFloat(paserInt(precioT)+parseInt(ivaT));
-            $("#total").val((parseInt(precio)+parseInt(iva)) * stock);
-            //$('#total').attr("value", $("#precio").val() +  $("#iva").val());
+            var total = parseFloat((parseInt(importe) + parseInt(iva)));
+            $("#total").val(total);
         });
 
         // $("#codigo").keyup(function() {

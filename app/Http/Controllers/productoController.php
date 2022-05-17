@@ -58,7 +58,9 @@ class productoController extends Controller
         $modelo     = $request->modelo;
         $unidad     = $request->unidad;
         $stock      = $request->stock;
+        $cantidad   = $request->stock;
         $precio     = $request->precio;
+        $importe    = $request->importe;
         $iva        = $request->iva;
         $total      = $request->total;
         $status     = $request->status;
@@ -95,7 +97,9 @@ class productoController extends Controller
         $prod->modelo       = $request->modelo;
         $prod->unidad       = $request->unidad;
         $prod->stock        = $request->stock;
+        $prod->cantidad     = $request->stock;
         $prod->precio       = $request->precio;
+        $prod->importe      = $request->importe;
         $prod->iva          = $request->iva;
         $prod->total        = $request->total;
         $prod->tipo         = 1;

@@ -309,15 +309,17 @@
 
         $("#codigo").focusout(function(){
             $("#detalleFechas").load('{{url('detalleFechas')}}' + '?codigo=' + $("#codigo").val());
-            //console.log(idCat);
+            $("#cantidad").focus();
         });
 
         $("#codigo").focusout(function() {
             $("#productoDetalle").load('{{url('productoDetalle')}}' + '?codigo=' + $("#codigo").val());
+            $("#cantidad").focus();
         });
 
         $("#codigo").focusout(function() {
             $("#detallePrecio").load('{{url('detallePrecio')}}' + '?codigo=' + $("#codigo").val());
+            $("#cantidad").focus();
         });
 
         $("#cantidad").keyup(function(){
@@ -332,6 +334,7 @@
             //var tot=parseFloat(paserInt(precioT)+parseInt(ivaT));
             $("#total").val((parseInt(importe)+parseInt(iva)));
             //$('#total').attr("value", $("#precio").val() +  $("#iva").val());
+
         });
         
         /*$("#categoria").change( function() {

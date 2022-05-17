@@ -47,7 +47,7 @@
                 <label for="exampleInputname"><b>IVA</b></label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="ti-money"></i></div>
-                    <input type="text" name="iva" id="iva" class="form-control" value="{{$cpro->iva}}">
+                    <input type="text" name="iva" id="iva" class="form-control" value="">
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <label for="exampleInputname"><b>Total</b></label>
                 <div class="input-group">
                     <div class="input-group-addon"><i class="ti-money"></i></div>
-                    <input type="text" name="total" id="total" class="form-control" value="{{$cpro->total}}">
+                    <input type="text" name="total" id="total" class="form-control" value="">
                 </div>
             </div>
         </div>
@@ -73,6 +73,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#cantidad").focus();
         $("#cantidad").focusout(function(){
             var precio = $("#precio").val();
             var cantidad = $("#cantidad").val();
@@ -84,10 +85,11 @@
             //var ivaT = $("#iva").val();
             //var precioT = $("#precio").val();
             //var tot=parseFloat(paserInt(precioT)+parseInt(ivaT));
-            var total = parseFloat((parseInt(importe) + parseInt(iva))).toFixed(2);
+            var total = parseFloat((parseInt(importe) + parseInt(iva)));
             $("#total").val(total);
             // $("#total").val((parseInt(importe)+parseInt(iva))).toFixed(2);
             //$('#total').attr("value", $("#precio").val() +  $("#iva").val());
+
         });
     });
 </script>

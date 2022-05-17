@@ -16,7 +16,9 @@ class historicos extends Migration
         Schema::create('historicos', function (Blueprint $table){
             $table->increments('idBV');
             $table->dateTime('fechaHora');
+            $table->integer('cantidad');
             $table->double('precio');
+            $table->double('importe');
             $table->double('iva');
             $table->double('total');
             $table->integer('idVenta')->unsigned();

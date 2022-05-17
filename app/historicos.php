@@ -9,6 +9,6 @@ class historicos extends Model
 {
     use SoftDeletes;
     protected $primaryKey   =   'idBV';
-    protected $fillable     =   ['idBV','fechaHora','precio','iva','total','idVenta','idUsu'];
+    protected $fillable     =   ['idBV','fechaHora','cantidad','precio','importe','iva','total','idVenta','idUsu'];
     protected $date=['deleted_at'];
 }

@@ -98,6 +98,7 @@ class ventaController extends Controller
         /*$precio         = $request->precio;
         $iva            = $request->iva;
         $total          = $request->total;*/
+        $cantidad       = $request->cantidad;
         $descripcion    = $request->descripcion;
         $uVenta         = $request->uVenta;
         $fEntrada       = $request->feEntrada;
@@ -126,7 +127,7 @@ class ventaController extends Controller
         $vent->fechaEntrada = $request->fEntrada;
         $vent->modelo       = $request->modelo;
         $vent->color        = $request->color;
-        $vent->stock        = $request->stock-1;
+        $vent->stock        = $request->stock - $cantidad;
         $vent->medida       = $request->medida;
         $vent->genero       = $request->genero;
         $vent->talla        = $request->talla;
@@ -146,7 +147,9 @@ class ventaController extends Controller
         $bVen               = new historicos;
         $bVen->idBV         = $idBVSig;
         $bVen->fechaHora    = $fechaHoraL;
+        $bVen->cantidad     = $request->cantidad;
         $bVen->precio       = $request->precio;
+        $bVen->importe      = $request->importe;
         $bVen->iva          = $request->iva;
         $bVen->total        = $request->total;
         $bVen->idVenta      = $request->idVenta;
@@ -154,7 +157,7 @@ class ventaController extends Controller
         $bVen->save();
 
         $venPro             = productos::find($idPro);
-        $venPro->stock      = $request->stock-1;
+        $venPro->stock      = $request->stock - $cantidad;
         $venPro->save();
         
         $proceso = "Venta Realizada";

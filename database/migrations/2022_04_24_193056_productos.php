@@ -20,7 +20,9 @@ class Productos extends Migration
             $table->string('modelo',40);
             $table->string('unidad',40);
             $table->integer('stock');
+            $table->integer('cantidad');
             $table->double('precio');
+            $table->double('importe');
             $table->double('iva');
             $table->double('total');
             $table->integer('tipo');
