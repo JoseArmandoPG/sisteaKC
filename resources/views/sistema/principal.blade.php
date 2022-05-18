@@ -291,7 +291,7 @@
                             </ul>
                         </li>
                         <!-- <li> <a href="{{URL::action('productoController@busqueda')}}"><i class="fa fa-dollar"></i><span class="hide-menu">Producto</span></a></li> -->
-                        @if(Session::get('sesionTipo')=='admin')
+                        @if(Session::get('sesionTipo')=='sadmin')
                         <li> <a href="{{URL::action('productoController@busqueda')}}"><i class="fa fa-bar-chart"></i><span class="hide-menu">Grafica</span></a></li>
                         @endif
                     </ul>
