@@ -148,6 +148,91 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
+                            <label for="exampleInputname"><b>Ultimo Movimiento</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                                <input type="date" name="uMovimiento" id="uMovimiento" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Fecha de Caducidad</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                                <input type="date" name="fCaducidad" id="fCaducidad" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-6">
+                    @if($errors->first('color'))
+                        <i>{{$errors->first('color')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Color</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-pin"></i></div>
+                            <input type="text" name="color" id="color" class="form-control" value="{{old('color')}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    @if($errors->first('medida'))
+                        <i>{{$errors->first('medida')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Medida</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-ruler"></i></div>
+                            <input type="text" name="medida" id="medida" class="form-control" value="{{old('medida')}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    @if($errors->first('genero'))
+                        <i>{{$errors->first('genero')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Genero</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-info"></i></div>
+                            <input type="text" name="genero" id="genero" class="form-control" value="{{old('genero')}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    @if($errors->first('talla'))
+                        <i>{{$errors->first('talla')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Talla</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-ruler"></i></div>
+                            <input type="text" name="talla" id="talla" class="form-control" value="{{old('talla')}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    @if($errors->first('linea'))
+                        <i>{{$errors->first('linea')}}</i>
+                    @endif
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Linea</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-tag"></i></div>
+                            <input type="text" name="linea" id="linea" class="form-control" value="{{old('linea')}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
                             <label for="exampleInputuname"><b>Status</b></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-receipt"></i></div>

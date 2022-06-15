@@ -64,11 +64,17 @@ class productoController extends Controller
         $iva        = $request->iva;
         $total      = $request->total;
         $status     = $request->status;
+        $color      = $request->color;
+        $medida     = $request->medida;
+        $genero     = $request->genero;
+        $talla      = $request->talla;
+        $linea      = $request->linea;
+        $fCaducidad = $request->fCaducidad;
 
         $this->validate($request,[
 			'idPro'		=>'required|numeric',
             'codigo'	=>'required|string',
-            'producto'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
+            'producto'	=>'required|string',
             'modelo'	=>'required|string',
             'unidad'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
             'status'	=>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
@@ -104,11 +110,18 @@ class productoController extends Controller
         $prod->total        = $request->total;
         $prod->tipo         = 1;
         $prod->status       = $request->status;
+        $prod->color        = $request->color;
+        $prod->medida       = $request->medida;
+        $prod->genero       = $request->genero;
+        $prod->talla        = $request->talla;
+        $prod->linea        = $request->linea;
+        $prod->fCaducidad   = $request->fCaducidad;
         $prod->idCat        = $request->idCat;
         $prod->idUb         = $request->idUb;
         $prod->idPla        = $request->idPla;
         $prod->idMarca      = $request->idMarca;
         $prod->foto         = $imgfo2;
+        $prod->updated_at   = $request->uMovimiento;
         $prod->save();
 
         $bPro               = new bitacoras;
