@@ -11,8 +11,8 @@
             {{csrf_field()}}
             <div class="row">
                 <div class="col-lg-0">
-                    @if($errors->first('idPro'))
-                        <i>{{$errors->first('idPro')}}</i>
+                    @if($errors->first('idVenta'))
+                        <i>{{$errors->first('idVenta')}}</i>
                     @endif
                     <div class="form-group">
                         <div class="input-group">
@@ -108,6 +108,71 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        @if($errors->first('color'))
+                            <i>{{$errors->first('color')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Color</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-pin"></i></div>
+                                <input type="text" name="color" id="color" class="form-control" value="{{old('color')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @if($errors->first('medida'))
+                            <i>{{$errors->first('medida')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Medida</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-ruler"></i></div>
+                                <input type="text" name="medida" id="medida" class="form-control" value="{{old('medida')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        @if($errors->first('genero'))
+                            <i>{{$errors->first('genero')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Genero</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-info"></i></div>
+                                <input type="text" name="genero" id="genero" class="form-control" value="{{old('genero')}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        @if($errors->first('talla'))
+                            <i>{{$errors->first('talla')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Talla</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-ruler"></i></div>
+                                <input type="text" name="talla" id="talla" class="form-control" value="{{old('talla')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        @if($errors->first('linea'))
+                            <i>{{$errors->first('linea')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Linea</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-tag"></i></div>
+                                <input type="text" name="linea" id="linea" class="form-control" value="{{old('linea')}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="detalleFechas">
                 <div class="row">
@@ -139,7 +204,7 @@
             </div>
             <div id="detallePrecio">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         @if($errors->first('cantidad'))
                             <i>{{$errors->first('cantidad')}}</i>
                         @endif
@@ -151,7 +216,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         @if($errors->first('precio'))
                             <i>{{$errors->first('precio')}}</i>
                         @endif
@@ -163,8 +228,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-4">
                         @if($errors->first('importe'))
                             <i>{{$errors->first('importe')}}</i>
@@ -177,6 +240,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-4">
                         @if($errors->first('iva'))
                             <i>{{$errors->first('iva')}}</i>
@@ -202,69 +267,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    @if($errors->first('color'))
-                        <i>{{$errors->first('color')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Color</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-pin"></i></div>
-                            <input type="text" name="color" id="color" class="form-control" value="{{old('color')}}">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    @if($errors->first('medida'))
-                        <i>{{$errors->first('medida')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Medida</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-ruler"></i></div>
-                            <input type="text" name="medida" id="medida" class="form-control" value="{{old('medida')}}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    @if($errors->first('genero'))
-                        <i>{{$errors->first('genero')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Genero</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-info"></i></div>
-                            <input type="text" name="genero" id="genero" class="form-control" value="{{old('genero')}}">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-4">
-                    @if($errors->first('talla'))
-                        <i>{{$errors->first('talla')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Talla</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-ruler"></i></div>
-                            <input type="text" name="talla" id="talla" class="form-control" value="{{old('talla')}}">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    @if($errors->first('linea'))
-                        <i>{{$errors->first('linea')}}</i>
-                    @endif
-                    <div class="form-group">
-                        <label for="exampleInputname"><b>Linea</b></label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-tag"></i></div>
-                            <input type="text" name="linea" id="linea" class="form-control" value="{{old('linea')}}">
+                    <div class="col-lg-4">
+                        @if($errors->first('precioAlterno'))
+                            <i>{{$errors->first('precioAlterno')}}</i>
+                        @endif
+                        <div class="form-group">
+                            <label for="exampleInputname"><b>Precio alternativo</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-money"></i></div>
+                                <input type="text" name="precioAlterno" id="precioAlterno" class="form-control" value="{{old('precioAlterno')}}">
+                            </div>
                         </div>
                     </div>
                 </div>

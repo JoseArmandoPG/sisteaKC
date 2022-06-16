@@ -30,8 +30,8 @@ class productoController extends Controller
         $marcas         = marcas::OrderBy('marca','deleted_at','asc')->get();
         $clavesig       = productos::orderBy('idPro','producto')->take(1)->get();
 		$idproSig       = $clavesig[0]->idPro+1;
-        $sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
-        $idBitSig       = $sigBita[0]->idBP+1;
+        //$sigBita        = bitacoras::orderBy('idBP')->take(1)->get();
+        //$idBitSig       = $sigBita[0]->idBP+1;
 		return view ('sistema.productos.altaProducto')
                     ->with('categorias',$categorias)
                     ->with('ubicaciones',$ubicaciones)
@@ -48,28 +48,30 @@ class productoController extends Controller
         date_default_timezone_set('America/Mexico_City');
         $fechaHoraL = date('Y-m-d H:i:s', time());
         $userID         = Session::get('sesionidUsu');
-        $sigBita        = bitacoras::orderBy('idBP','tipo')->take(1)->get();
-		$idBPSig        = $sigBita[0]->idBP+1;
+        //$sigBita        = bitacoras::orderBy('idBP','tipo')->take(1)->get();
+		//$idBPSig        = $sigBita[0]->idBP+1;
 
 
-        $idPro      = $request->idPro;
-        $codigo     = $request->codigo;
-        $producto   = $request->producto;
-        $modelo     = $request->modelo;
-        $unidad     = $request->unidad;
-        $stock      = $request->stock;
-        $cantidad   = $request->stock;
-        $precio     = $request->precio;
-        $importe    = $request->importe;
-        $iva        = $request->iva;
-        $total      = $request->total;
-        $status     = $request->status;
-        $color      = $request->color;
-        $medida     = $request->medida;
-        $genero     = $request->genero;
-        $talla      = $request->talla;
-        $linea      = $request->linea;
-        $fCaducidad = $request->fCaducidad;
+        $idPro          = $request->idPro;
+        $codigo         = $request->codigo;
+        $producto       = $request->producto;
+        $modelo         = $request->modelo;
+        $unidad         = $request->unidad;
+        $stock          = $request->stock;
+        $cantidad       = $request->stock;
+        $precio         = $request->precio;
+        $importe        = $request->importe;
+        $iva            = $request->iva;
+        $total          = $request->total;
+        $precioAlterno  = $request->precioAlterno;
+        $status         = $request->status;
+        $color          = $request->color;
+        $medida         = $request->medida;
+        $genero         = $request->genero;
+        $talla          = $request->talla;
+        $linea          = $request->linea;
+        $fCaducidad     = $request->fCaducidad;
+        $uMovimiento    = $request->uMovimiento;
 
         $this->validate($request,[
 			'idPro'		=>'required|numeric',
@@ -87,45 +89,52 @@ class productoController extends Controller
 
         $file	= $request->file('foto');
 		if($file!=""){
-		$ldate	= date('Ymd_His_');
-		$imgfo	= $file->getClientOriginalName();
-		$imgfo2	= $ldate.$imgfo;
-		\Storage::disk('local')->put($imgfo2,\File::get($file));
+		    $ldate	= date('Ymd_His_');
+		    $imgfo	= $file->getClientOriginalName();
+		    $imgfo2	= $ldate.$imgfo;
+		    \Storage::disk('local')->put($imgfo2,\File::get($file));
 		}
 		else {
 			$imgfo2	= 'sin_foto.jpg';
         }
 
-        $prod               = new productos;
-        $prod->idPro        = $request->idPro;
-        $prod->codigo       = $request->codigo;
-        $prod->producto     = $request->producto;
-        $prod->modelo       = $request->modelo;
-        $prod->unidad       = $request->unidad;
-        $prod->stock        = $request->stock;
-        $prod->cantidad     = $request->stock;
-        $prod->precio       = $request->precio;
-        $prod->importe      = $request->importe;
-        $prod->iva          = $request->iva;
-        $prod->total        = $request->total;
-        $prod->tipo         = 1;
-        $prod->status       = $request->status;
-        $prod->color        = $request->color;
-        $prod->medida       = $request->medida;
-        $prod->genero       = $request->genero;
-        $prod->talla        = $request->talla;
-        $prod->linea        = $request->linea;
-        $prod->fCaducidad   = $request->fCaducidad;
-        $prod->idCat        = $request->idCat;
-        $prod->idUb         = $request->idUb;
-        $prod->idPla        = $request->idPla;
-        $prod->idMarca      = $request->idMarca;
-        $prod->foto         = $imgfo2;
-        $prod->updated_at   = $request->uMovimiento;
+        if($uMovimiento == ""){
+            $ultimoMov = $fechaHoraL;
+        }else{
+            $ultimoMov = $uMovimiento;
+        }
+
+        $prod                   = new productos;
+        //$prod->idPro            = $request->idPro;
+        $prod->codigo           = $request->codigo;
+        $prod->producto         = $request->producto;
+        $prod->modelo           = $request->modelo;
+        $prod->unidad           = $request->unidad;
+        $prod->stock            = $request->stock;
+        $prod->cantidad         = $request->stock;
+        $prod->precio           = $request->precio;
+        $prod->importe          = $request->importe;
+        $prod->iva              = $request->iva;
+        $prod->total            = $request->total;
+        $prod->precioAlterno    = $request->precioAlterno;
+        $prod->tipo             = 1;
+        $prod->status           = $request->status;
+        $prod->color            = $request->color;
+        $prod->medida           = $request->medida;
+        $prod->genero           = $request->genero;
+        $prod->talla            = $request->talla;
+        $prod->linea            = $request->linea;
+        $prod->fCaducidad       = $request->fCaducidad;
+        $prod->idCat            = $request->idCat;
+        $prod->idUb             = $request->idUb;
+        $prod->idPla            = $request->idPla;
+        $prod->idMarca          = $request->idMarca;
+        $prod->foto             = $imgfo2;
+        $prod->updated_at       = $ultimoMov;
         $prod->save();
 
         $bPro               = new bitacoras;
-        $bPro->idBP         = $idBPSig+1;
+        //$bPro->idBP         = $idBPSig+1;
         $bPro->fechaHora    = $fechaHoraL;
         $bPro->tipo         = 1;
         $bPro->idPro        = $request->idPro;
@@ -142,8 +151,9 @@ class productoController extends Controller
     }*/
 
     public function reporteProducto(){
-        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,
-        pl.plataforma AS plataforma,m.marca AS marca,p.deleted_at, EXTRACT(MONTH FROM p.updated_at) AS mes,p.updated_at
+        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.importe,p.iva,p.total,p.precioAlterno,p.fCaducidad,p.status,p.color,p.medida,
+        p.genero,p.talla,p.linea,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,pl.plataforma AS plataforma,m.marca AS marca,p.deleted_at, 
+        EXTRACT(MONTH FROM p.updated_at) AS mes,p.updated_at
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
@@ -154,11 +164,12 @@ class productoController extends Controller
         /** FECHA**/
         date_default_timezone_set('America/Mexico_City');
         $fecha = date("d-m-Y");
+        $fechaHoy = date("Y-m-d");
         $hora = date("H:i:s");
         $fechaHoraL = date('d-m-Y H:i:s', time());
 
         $mes = date("m", strtotime($fecha));
-        return view('sistema.productos.reporteProductos')->with('productos',$productos)->with('mes',$mes);
+        return view('sistema.productos.reporteProductos')->with('productos',$productos)->with('mes',$mes)->with('fechaHoy',$fechaHoy);
     }
 
     public function eliminaProducto($idPro){
@@ -212,16 +223,25 @@ class productoController extends Controller
     }
 
     public function editaProducto(Request $request){
-        $idPro      = $request->idPro;
-        $codigo     = $request->codigo;
-        $producto   = $request->producto;
-        $modelo     = $request->modelo;
-        $unidad     = $request->unidad;
-        $stock      = $request->stock;
-        $precio     = $request->precio;
-        $iva        = $request->iva;
-        $total      = $request->total;
-        $status     = $request->status;
+        $idPro          = $request->idPro;
+        $codigo         = $request->codigo;
+        $producto       = $request->producto;
+        $modelo         = $request->modelo;
+        $unidad         = $request->unidad;
+        $stock          = $request->stock;
+        $precio         = $request->precio;
+        $importe        = $request->importe;
+        $iva            = $request->iva;
+        $total          = $request->total;
+        $precioAlterno  = $request->precioAlterno;
+        $status         = $request->status;
+        $color          = $request->color;
+        $medida         = $request->medida;
+        $genero         = $request->genero;
+        $talla          = $request->talla;
+        $linea          = $request->linea;
+        $uMovimiento    = $request->uMovimiento;
+        $fCaducidad     = $request->fCaducidad;
 
         $this->validate($request,[
             'idPro'		=>'required|numeric',
@@ -248,23 +268,32 @@ class productoController extends Controller
 			$imgfo2	= 'sin_foto.jpg';
         }
 
-        $prod               = productos::find($idPro);
-        $prod->idPro        = $request->idPro;
-        $prod->codigo       = $request->codigo;
-        $prod->producto     = $request->producto;
-        $prod->modelo       = $request->modelo;
-        $prod->unidad       = $request->unidad;
-        $prod->stock        = $request->stock;
-        $prod->precio       = $request->precio;
-        $prod->iva          = $request->iva;
-        $prod->total        = $request->total;
-        $prod->status       = $request->status;
-        $prod->idCat        = $request->idCat;
-        $prod->idUb         = $request->idUb;
-        $prod->idPla        = $request->idPla;
-        $prod->idMarca      = $request->idMarca;
+        $prod                   = productos::find($idPro);
+        $prod->idPro            = $request->idPro;
+        $prod->codigo           = $request->codigo;
+        $prod->producto         = $request->producto;
+        $prod->modelo           = $request->modelo;
+        $prod->unidad           = $request->unidad;
+        $prod->stock            = $request->stock;
+        $prod->precio           = $request->precio;
+        $prod->importe          = $request->importe;
+        $prod->iva              = $request->iva;
+        $prod->total            = $request->total;
+        $prod->precioAlterno    = $request->precioAlterno;
+        $prod->status           = $request->status;
+        $prod->color            = $request->color;
+        $prod->medida           = $request->medida;
+        $prod->genero           = $request->genero;
+        $prod->talla            = $request->talla;
+        $prod->linea            = $request->linea;
+        $prod->updated_at       = $request->uMovimiento;
+        $prod->fCaducidad       = $request->fCaducidad;
+        $prod->idCat            = $request->idCat;
+        $prod->idUb             = $request->idUb;
+        $prod->idPla            = $request->idPla;
+        $prod->idMarca          = $request->idMarca;
         if($file!=''){
-            $prod->foto     = $imgfo2;
+            $prod->foto         = $imgfo2;
         }
         $prod->save();
 
@@ -281,8 +310,8 @@ class productoController extends Controller
 
     public function productoDetalle(Request $request){
         $codigo = $request->get('codigo');
-        $productos =\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
-        pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+        $productos =\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.color,p.medida,p.genero,p.talla,p.linea,
+        p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,pl.plataforma as plataforma,m.marca as marca,p.deleted_at
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
@@ -293,8 +322,8 @@ class productoController extends Controller
     }
 
     public function seeProducto($idPro){
-        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
-        pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+        $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.importe,p.iva,p.total,p.precioAlterno,p.fCaducidad,p.status,p.color,p.medida,
+        p.genero,p.talla,p.linea,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,pl.plataforma as plataforma,m.marca as marca,p.deleted_at,p.updated_at
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb

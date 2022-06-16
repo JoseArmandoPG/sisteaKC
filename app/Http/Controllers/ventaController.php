@@ -68,8 +68,8 @@ class ventaController extends Controller
 
     public function detallePrecio(Request $request){
         $codigo = $request->get('codigo');
-        $productos =\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.status,p.foto,c.categoria as categoria,u.ubicacion AS ubicacion,
-        pl.plataforma as plataforma,m.marca as marca,p.deleted_at
+        $productos =\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.iva,p.total,p.precioAlterno,p.status,p.foto,c.categoria as categoria,
+        u.ubicacion AS ubicacion,pl.plataforma as plataforma,m.marca as marca,p.deleted_at
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
@@ -83,13 +83,13 @@ class ventaController extends Controller
         date_default_timezone_set('America/Mexico_City');
         $fechaHoraL = date('Y-m-d H:i:s', time());
         $userID         = Session::get('sesionidUsu');
-        $sigBita        = bitacoras::orderBy('idBP','fechaHora')->take(1)->get();
-		$idBPSig        = $sigBita[0]->idBP+1;
-        $sigHisto       = historicos::orderBy('idBV','fechaHora')->take(1)->get();
-        $idBVSig        = $sigHisto[0]->idBV+1;
+        //$sigBita        = bitacoras::orderBy('idBP','fechaHora')->take(1)->get();
+		//$idBPSig        = $sigBita[0]->idBP+1;
+        //$sigHisto       = historicos::orderBy('idBV','fechaHora')->take(1)->get();
+        //$idBVSig        = $sigHisto[0]->idBV+1;
 
 
-        $idVenta        = $request->idVenta;
+        //$idVenta        = $request->idVenta;
         $categoria      = $request->categoria;
         $idPro          = $request->idPro;
         $codigo         = $request->codigo;
@@ -120,7 +120,7 @@ class ventaController extends Controller
         }
 
         $vent               = new ventas;
-        $vent->idVenta      = $request->idVenta;
+        //$vent->idVenta      = $request->idVenta;
         $vent->codigo       = $request->codigo;
         $vent->descripcion  = $request->descripcion;
         $vent->ultimaVenta  = $fec;
@@ -137,7 +137,7 @@ class ventaController extends Controller
         $vent->save();
 
         $bPro               = new bitacoras;
-        $bPro->idBP         = $idBPSig;
+        //$bPro->idBP         = $idBPSig;
         $bPro->fechaHora    = $fechaHoraL;
         $bPro->tipo         = 3;
         $bPro->idPro        = $request->idPro;
@@ -145,7 +145,7 @@ class ventaController extends Controller
         $bPro->save();
 
         $bVen               = new historicos;
-        $bVen->idBV         = $idBVSig;
+        //$bVen->idBV         = $idBVSig;
         $bVen->fechaHora    = $fechaHoraL;
         $bVen->cantidad     = $request->cantidad;
         $bVen->precio       = $request->precio;

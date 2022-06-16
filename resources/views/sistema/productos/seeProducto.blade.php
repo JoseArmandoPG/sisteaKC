@@ -18,52 +18,76 @@
                                     <tr>
                                         <th>Codigo</th>
                                         <td style="text-align:left;">{{$pr->codigo}}</td>
-                                    </tr>
-                                    <tr>
+
                                         <th>Producto</th>
                                         <td style="text-align:left;">{{$pr->producto}}</td>
                                     </tr>
                                     <tr>
                                         <th>Modelo</th>
                                         <td style="text-align:left;">{{$pr->modelo}}</td>
-                                    </tr>
-                                    <tr>
+
                                         <th>Unidad</th>
                                         <td style="text-align:left;">{{$pr->unidad}}</td>
-                                    </tr>
                                     <tr>
                                         <th>Stock</th>
                                         <td style="text-align:left;">{{$pr->stock}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Status</th>
-                                        <td style="text-align:left;">{{$pr->status}}</td>
-                                    </tr>
-                                    <tr>
+
                                         <th>Precio</th>
                                         <td style="text-align:left;">$ {{$english_format_number=number_format($pr->precio)}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Importe</th>
+                                        <td style="text-align:left;">$ {{$english_format_number=number_format($pr->importe)}}</td>
+
                                         <th>Iva</th>
                                         <td style="text-align:left;">$ {{$english_format_number=number_format($pr->iva)}}</td>
                                     </tr>
                                     <tr>
                                         <th>Precio + Iva</th>
                                         <td style="text-align:left;">$ {{$english_format_number=number_format($pr->total)}}</td>
+
+                                        <th>Precio Alternativo</th>
+                                        <td style="text-align:left;">$ {{$english_format_number=number_format($pr->precioAlterno)}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Caducidad</th>
+                                        <td style="text-align:left;">{{$pr->fCaducidad}}</td>                                        
+
+                                        <th>Ultimo Movimiento</th>
+                                        <td style="text-align:left;">{{$pr->updated_at}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td style="text-align:left;">{{$pr->status}}</td>
+
+                                        <th>Color</th>
+                                        <td style="text-align:left;">{{$pr->color}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Medida</th>
+                                        <td style="text-align:left;">{{$pr->medida}}</td>
+
+                                        <th>Genero</th>
+                                        <td style="text-align:left;">{{$pr->genero}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Talla</th>
+                                        <td style="text-align:left;">{{$pr->talla}}</td>
+
+                                        <th>Linea</th>
+                                        <td style="text-align:left;">{{$pr->linea}}</td>
                                     </tr>
                                     <tr>
                                         <th>Categoria</th>
                                         <td style="text-align:left;">{{$pr->categoria}}</td>
-                                    </tr>
-                                    <tr>
+
                                         <th>Ubicacion</th>
                                         <td style="text-align:left;">{{$pr->ubicacion}}</td>
                                     </tr>
                                     <tr>
                                         <th>Plataforma</th>
                                         <td style="text-align:left;">{{$pr->plataforma}}</td>
-                                    </tr>
-                                    <tr>
+
                                         <th>Marca</th>
                                         <td style="text-align:left;">{{$pr->marca}}</td>
                                     </tr>

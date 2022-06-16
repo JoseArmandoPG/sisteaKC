@@ -1,6 +1,6 @@
 @foreach($productos as $cpro)
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             @if($errors->first('cantidad'))
                 <i>{{$errors->first('cantidad')}}</i>
             @endif
@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             @if($errors->first('precio'))
                 <i>{{$errors->first('precio')}}</i>
             @endif
@@ -24,8 +24,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-lg-4">
             @if($errors->first('importe'))
                 <i>{{$errors->first('importe')}}</i>
@@ -38,7 +36,8 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="row">
         <div class="col-lg-4">
             @if($errors->first('iva'))
                 <i>{{$errors->first('iva')}}</i>
@@ -61,6 +60,19 @@
                 <div class="input-group">
                     <div class="input-group-addon"><i class="ti-money"></i></div>
                     <input type="text" name="total" id="total" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            @if($errors->first('precioAlterno'))
+                <i>{{$errors->first('precioAlterno')}}</i>
+            @endif
+            <div class="form-group">
+                <label for="exampleInputname"><b>Precio Alternativo</b></label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="ti-money"></i></div>
+                    <input type="text" name="precioAlterno" id="precioAlterno" class="form-control" value="{{$cpro->precioAlterno}}">
                 </div>
             </div>
         </div>
