@@ -12,22 +12,22 @@ use Session;
 class categoriaController extends Controller
 {
     public function altaCategoria(){
-        $clavesig = categorias::orderBy('idCat','categoria')->take(1)->get();
-		$idcate	  = $clavesig[0]->idCat+1;
-		return view ('sistema.categorias.altaCategoria')->with('idcate',$idcate);
+        //$clavesig = categorias::orderBy('idCat','categoria')->take(1)->get();
+		//$idcate	  = $clavesig[0]->idCat+1;
+		return view ('sistema.categorias.altaCategoria');
     }
 
     public function guardaCategoria(Request $request){
-        $idCat      = $request->idCat;
+        //$idCat      = $request->idCat;
         $categoria  = $request->categoria;
 
         $this->validate($request,[
-            'idCat'     =>'required|numeric',
+            //'idCat'     =>'required|numeric',
             'categoria' =>'required|regex:/^[A-Z][A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
         ]);
 
         $cat            =   new categorias;
-        $cat->idCat     =   $request->idCat;
+        //$cat->idCat     =   $request->idCat;
         $cat->categoria =   $request->categoria;
         $cat->save();
 

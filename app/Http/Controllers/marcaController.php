@@ -12,22 +12,22 @@ use Session;
 class marcaController extends Controller
 {
     public function altaMarca(){
-        $clavesig   = marcas::orderBy('idMarca','marca')->take(1)->get();
-		$idmarSig    = $clavesig[0]->idMarca+1;
-		return view ('sistema.marcas.altaMarca')->with('idmarSig',$idmarSig);
+        //$clavesig   = marcas::orderBy('idMarca','marca')->take(1)->get();
+		//$idmarSig    = $clavesig[0]->idMarca+1;
+		return view ('sistema.marcas.altaMarca');
     }
 
     public function guardaMarca(Request $request){
-        $idMarca    = $request->idMarca;
+        //$idMarca    = $request->idMarca;
         $marca      = $request->marca;
 
         $this->validate($request,[
-            'idMarca'   =>'required|numeric',
+            //'idMarca'   =>'required|numeric',
             'marca'     =>'required|string',
         ]);
 
         $mar            = new marcas;
-        $mar->idMarca   = $request->idMarca;
+        //$mar->idMarca   = $request->idMarca;
         $mar->marca     = $request->marca;
         $mar->save();
 

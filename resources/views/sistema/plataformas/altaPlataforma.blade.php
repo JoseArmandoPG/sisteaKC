@@ -13,7 +13,7 @@
                     @endif
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="hidden" name="idPla" id="idPla" class="form-control" value="{{$idplata}}" readonly="readonly">
+                            <input type="hidden" name="idPla" id="idPla" class="form-control" value="" readonly="readonly">
                         </div>
                     </div>
                 </div>

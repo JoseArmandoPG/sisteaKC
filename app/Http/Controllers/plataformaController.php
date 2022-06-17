@@ -12,22 +12,22 @@ use Session;
 class plataformaController extends Controller
 {
     public function altaPlataforma(){
-        $clavesig   = plataformas::orderBy('idPla','plataforma')->take(1)->get();
-		$idplata    = $clavesig[0]->idPla+1;
-		return view ('sistema.plataformas.altaPlataforma')->with('idplata',$idplata);
+        /*$clavesig   = plataformas::orderBy('idPla','plataforma')->take(1)->get();
+		$idplata    = $clavesig[0]->idPla+1;*/
+		return view ('sistema.plataformas.altaPlataforma');
     }
 
     public function guardaPlataforma(Request $request){
-        $idPla      = $request->idPla;
+        //$idPla      = $request->idPla;
         $plataforma = $request->plataforma;
 
         $this->validate($request,[
-            'idPla'      =>'required|numeric',
+            //'idPla'      =>'required|numeric',
             'plataforma' =>'required|regex:/^[A-Z][A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
         ]);
 
         $plat               =   new plataformas;
-        $plat->idPla        =   $request->idPla;
+        //$plat->idPla        =   $request->idPla;
         $plat->plataforma   =   $request->plataforma;
         $plat->save();
 

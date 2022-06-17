@@ -261,7 +261,7 @@
                             <label for="exampleInputuname"><b>Categoria</b></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="ti-tag"></i></div>
-                                <Select class="form-control" name='idCat'>
+                                <Select class="form-control" name='idCat' id="idCat">
                                     <option value="0">Seleccione Categoria</option>
                                     @foreach($categorias as $ca)
                                         @if($ca->deleted_at!="")
@@ -269,6 +269,7 @@
                                             <option value = '{{$ca->idCat}}'>{{$ca->categoria}}</option>
                                         @endif
                                     @endforeach
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </div>
                         </div>
@@ -361,6 +362,13 @@
             $("#iva").val(iva);
             var total = parseFloat((parseInt(importe) + parseInt(iva)));
             $("#total").val(total);
+        });
+
+        $("#idCat").click(function(){
+            var categ = $("#idCat").val();
+            if(categ == "Otro"){
+                
+            }
         });
 
         // $("#codigo").keyup(function() {

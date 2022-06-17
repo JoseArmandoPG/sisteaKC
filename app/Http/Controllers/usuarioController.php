@@ -12,20 +12,20 @@ use Session;
 class usuarioController extends Controller
 {
     public function altaUsuario(){
-        $clavesig   = usuarios::orderBy('idUsu','usuario')->take(1)->get();
-		$idusuSig    = $clavesig[0]->idUsu+1;
-		return view ('sistema.usuarios.altaUsuario')->with('idusuSig',$idusuSig);
+        /*$clavesig   = usuarios::orderBy('idUsu','usuario')->take(1)->get();
+		$idusuSig    = $clavesig[0]->idUsu+1;*/
+		return view ('sistema.usuarios.altaUsuario');
     }
 
     public function guardaUsuario(Request $request){
-        $idUsu      = $request->idUsu;
+        //$idUsu      = $request->idUsu;
         $usuario    = $request->usuario;
         $password   = $request->password;
         $permisos   = $request->permisos;
         $nombre     = $request->nombre;
 
         $this->validate($request,[
-            'idUsu'     =>'required|numeric',
+            //'idUsu'     =>'required|numeric',
             'usuario'   =>'required|alpha_num',
             'password'  =>'required|alpha_num',
             'permisos'  =>'required|regex:/^[A-Z,a-z, ,ñ,á,é,í,ó,ú]+$/',
@@ -33,7 +33,7 @@ class usuarioController extends Controller
         ]);
 
         $usu                = new usuarios;
-        $usu->idUsu         = $request->idUsu;
+        //$usu->idUsu         = $request->idUsu;
         $usu->usuario       = $request->usuario;
         $usu->password      = $request->password;
         $usu->permisos      = $request->permisos;

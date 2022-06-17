@@ -12,22 +12,22 @@ use Session;
 class ubicacionController extends Controller
 {
     public function altaUbicacion(){
-        $clavesig = ubicaciones::orderBy('idUb','ubicacion')->take(1)->get();
-		$idubi	  = $clavesig[0]->idUb+1;
-		return view ('sistema.ubicaciones.altaUbicacion')->with('idubi',$idubi);
+        /*$clavesig = ubicaciones::orderBy('idUb','ubicacion')->take(1)->get();
+		$idubi	  = $clavesig[0]->idUb+1;*/
+		return view ('sistema.ubicaciones.altaUbicacion');
     }
 
     public function guardaUbicacion(Request $request){
-        $idUb      = $request->idUb;
+        //$idUb      = $request->idUb;
         $ubicacion  = $request->ubicacion;
 
         $this->validate($request,[
-            'idUb'      =>'required|numeric',
+            //'idUb'      =>'required|numeric',
             'ubicacion' =>'required|string',
         ]);
 
         $ubica            =   new ubicaciones;
-        $ubica->idUb     =   $request->idUb;
+        //$ubica->idUb     =   $request->idUb;
         $ubica->ubicacion =   $request->ubicacion;
         $ubica->save();
 
