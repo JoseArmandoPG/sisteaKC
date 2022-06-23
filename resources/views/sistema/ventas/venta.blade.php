@@ -291,11 +291,13 @@
                         <label for="exampleInputname"><b>Descripcion</b></label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-notepad"></i></div>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{old('descripcion')}}">
+                            <!-- <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{old('descripcion')}}"> -->
+                            <textarea name="descripcion" id="descripcion" cols="300" rows="6" value="{{old('descripcion')}}" placeholder="Max: 200 Caracteres"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <button type='submit' class="btn btn-success btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light m-r-10" Value='Guardar'><i class="ti-plus"></i>Guardar</button>
             <button type="reset" class="btn btn-danger btn-flat btn-addon m-b-10 m-l-5 waves-effect waves-light" value="Cancelar"><i class="ti-close"></i>Cancelar</button>
         </form>

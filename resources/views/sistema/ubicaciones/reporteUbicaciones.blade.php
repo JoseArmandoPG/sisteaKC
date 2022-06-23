@@ -4,6 +4,12 @@
         <div class="card-body">
             <h4 class="card-title text-primary">Ubicaciones</h4>
             <h6 class="card-subtitle">ConKalmhe</h6>
+            <div class="input-group input-group-sm mb-3">
+                <input id="entradafilter" type="text" class="form-control">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><b>Filtro &nbsp;<i class="ti-filter"></i></b></span>
+                </div>
+            </div>
             <div class="table-responsive m-t-40">
                 <table  class="table table-hover">
                     <thead style="background-color: rgba(255, 98, 0, 0.45);">
@@ -14,7 +20,7 @@
                             @foreach($ubicaciones as $ub)
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="contenidobusqueda">
                         <tr>
                             <td>{{$ub->idUb}}</td>
                             <td>{{$ub->ubicacion}}</td>
@@ -42,4 +48,18 @@
             </div>
         </div>
     </div>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript">
+        $('#entradafilter').keyup(function () {
+            var rex = new RegExp($(this).val(), 'i');
+            $('.contenidobusqueda tr').hide();
+            $('.contenidobusqueda tr').filter(function () {
+                    return rex.test($(this).text());
+            }).show();
+        })
+    </script>
 @stop
