@@ -64,11 +64,20 @@
                             @endphp
 
                             @php
+                                $campo2 = $pr->fCaducidad;
+                                $date2 = date_create($campo2);
+                                $fecha2 = date_format($date2, 'd-m-Y');
+                                $difCad = $pr->mesCad - $mes;
+                                
                                 if($pr->fCaducidad == "" || $pr->fCaducidad == '0000-00-00'){
                                     echo "<td>Sin Caducidad</td>";
                                 }else{
-                                    if($pr->fCaducidad >= $fechaHoy){
-                                        echo "<td><b class='bg-danger' style='color: #000000;'>$pr->fCaducidad </b></td>";
+                                    if($mes == $pr->mesCad){
+                                        echo "<td><b class='bg-danger' style='color: #000000;'>$fecha2 </b></td>";
+                                    }elseif($difCad > 1 && $difCad < 5){
+                                        echo "<td><b class='bg-warning' style='color: #000000;'>$fecha2</b></td>";
+                                    }elseif($difCad > 5){
+                                        echo "<td><b class='bg-success' style='color: #000000;'>$fecha2</b></td>";
                                     }
                                 }
 

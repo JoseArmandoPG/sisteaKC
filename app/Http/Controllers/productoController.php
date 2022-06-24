@@ -153,7 +153,7 @@ class productoController extends Controller
     public function reporteProducto(){
         $productos=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.importe,p.iva,p.total,p.precioAlterno,p.fCaducidad,p.status,p.color,p.medida,
         p.genero,p.talla,p.linea,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,pl.plataforma AS plataforma,m.marca AS marca,p.deleted_at, 
-        EXTRACT(MONTH FROM p.updated_at) AS mes,p.updated_at
+        EXTRACT(MONTH FROM p.updated_at) AS mes,p.updated_at, EXTRACT(MONTH FROM p.fCaducidad) AS mesCad
         FROM productos AS p
         INNER JOIN categorias AS c ON p.idCat = c.idCat
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb

@@ -16,7 +16,7 @@ class Ventas extends Migration
         Schema::create('ventas', function (Blueprint $table){
             $table->increments('idVenta');
             $table->string('codigo',40);
-            $table->string('descripcion',40);
+            $table->string('descripcion',255);
             $table->date('ultimaVenta');
             $table->date('fechaEntrada');
             $table->string('modelo',40);

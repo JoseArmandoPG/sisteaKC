@@ -25,8 +25,15 @@ class Productos extends Migration
             $table->double('importe');
             $table->double('iva');
             $table->double('total');
+            $table->double('precioAlterno');
             $table->integer('tipo');
             $table->string('status',40);
+            $table->string('color',40);
+            $table->double('medida');
+            $table->string('genero',40);
+            $table->double('talla');
+            $table->string('linea',40);
+            $table->date('fCaducidad');
             $table->string('foto',200);
             $table->integer('idCat')->unsigned();
             $table->foreign('idCat')->references('idCat')->on('categorias');

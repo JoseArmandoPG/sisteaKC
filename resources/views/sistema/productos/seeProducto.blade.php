@@ -51,10 +51,20 @@
                                     </tr>
                                     <tr>
                                         <th>Caducidad</th>
-                                        <td style="text-align:left;">{{$pr->fCaducidad}}</td>                                        
+                                        @php
+                                            $campo3 = $pr->fCaducidad;
+                                            $date3 = date_create($campo3);
+                                            $fecha3 = date_format($date3, 'd-m-y');
+                                        @endphp
+                                        <td style="text-align:left;">{{$fecha3}}</td>                                        
 
                                         <th>Ultimo Movimiento</th>
-                                        <td style="text-align:left;">{{$pr->updated_at}}</td>
+                                        @php
+                                            $campo4 = $pr->updated_at;
+                                            $date4 = date_create($campo4);
+                                            $fecha4 = date_format($date4, 'd-m-y');
+                                        @endphp
+                                        <td style="text-align:left;">{{$fecha4}}</td>
                                     </tr>
                                     <tr>
                                         <th>Status</th>
