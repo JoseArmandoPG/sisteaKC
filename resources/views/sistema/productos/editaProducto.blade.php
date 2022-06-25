@@ -157,7 +157,31 @@
                     </div>
                 </div>
             </div>
-
+            @php
+                $campo5 = $productoM->updated_at;
+                $date5 = date_create($campo5);
+                $fecha5 = date_format($date5, 'Y-m-d');
+            @endphp
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Ultimo Movimiento</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                            <input type="date" name="uMovimiento" id="uMovimiento" class="form-control" value="{{$fecha5}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="exampleInputname"><b>Fecha de Caducidad</b></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                            <input type="date" name="fCaducidad" id="fCaducidad" class="form-control" value="{{$productoM->fCaducidad}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-6">
                     @if($errors->first('color'))

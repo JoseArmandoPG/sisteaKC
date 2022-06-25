@@ -194,7 +194,16 @@ class productoController extends Controller
     }
 
     public function modificaProducto($idPro){
-        $productoM      = productos::where('idPro','=',$idPro)->get();
+        $productoM=\DB::select("SELECT p.idPro,p.codigo,p.producto,p.modelo,p.unidad,p.stock,p.precio,p.importe,p.iva,p.total,p.precioAlterno,p.fCaducidad,p.status,p.color,p.medida,
+        p.genero,p.talla,p.linea,p.foto,c.categoria AS categoria,u.ubicacion AS ubicacion,pl.plataforma AS plataforma,m.marca AS marca,p.deleted_at, 
+        EXTRACT(MONTH FROM p.updated_at) AS mes,p.updated_at, EXTRACT(MONTH FROM p.fCaducidad) AS mesCad,p.idCat,p.idUb,p.idPla,p.idMarca
+        FROM productos AS p
+        INNER JOIN categorias AS c ON p.idCat = c.idCat
+        INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
+        INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
+        INNER JOIN marcas AS m ON p.idMarca = m.idMarca
+        WHERE p.idPro = $idPro
+        ORDER BY p.idPro ASC");
 		$idCat         = $productoM[0]->idCat;
 		$categ          = categorias::where('idCat','=',$idCat)->get();
         $allCategorias  = categorias::where('idCat','!=',$idCat)->get();
