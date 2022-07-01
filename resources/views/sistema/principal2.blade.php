@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>! Sistema ConKalmhe</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->

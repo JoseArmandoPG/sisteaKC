@@ -48,14 +48,27 @@ class loginController extends Controller
 
     public function inicio(){
         $historicos =\DB::select("SELECT SUM(total) AS ganancias FROM historicos");
+
         $ventas =\DB::select("SELECT COUNT(idVenta) AS ventas FROM ventas");
+
         $graficas =\DB::select("SELECT COUNT(v.idVenta) AS cantidad ,p.producto
         FROM ventas AS v
         INNER JOIN productos AS p ON v.idPro = p.idPro
         GROUP BY p.producto ORDER BY cantidad DESC");
+
+        $graficaMV =\DB::select("SELECT COUNT(v.idVenta) AS cantidad ,p.producto
+        FROM ventas AS v
+        INNER JOIN productos AS p ON v.idPro = p.idPro
+        GROUP BY p.producto ORDER BY cantidad ASC");
+
         $productos =\DB::select("SELECT COUNT(idPro) AS nProductos, SUM(total) AS inversion FROM productos");
+
         if(Session::get('sesionidUsu')!=""){
-            return view('sistema.inicio')->with('historicos',$historicos[0])->with('ventas',$ventas[0])->with('productos',$productos[0])->with('graficas',$graficas);
+            return view('sistema.inicio')   ->with('historicos',$historicos[0])
+                                            ->with('ventas',$ventas[0])
+                                            ->with('productos',$productos[0])
+                                            ->with('graficas',$graficas)
+                                            ->with('graficaMV',$graficaMV);
         }else{
             Session::flash('error','Es necesario loguearse antes de continuar');
             return redirect()->route('login');

@@ -12,6 +12,7 @@
                 </div>
             </div>
             <div class="table-responsive m-t-40">
+                <b>Fecha y Hora Actual:</b> {{$fechaHoraL}} <p></p>
                 <table  class="table table-hover">
                     <thead style="background-color: rgba(255, 98, 0, 0.45);">
                         <tr>
@@ -62,7 +63,6 @@
                                     echo "<td><b class='bg-danger' style='color: #000000;'>$fecha </b></td>";
 
                             @endphp
-
                             @php
                                 $campo2 = $pr->fCaducidad;
                                 $date2 = date_create($campo2);
@@ -73,11 +73,15 @@
                                     echo "<td>Sin Caducidad</td>";
                                 }else{
                                     if($mes == $pr->mesCad){
-                                        echo "<td><b class='bg-danger' style='color: #000000;'>$fecha2 </b></td>";
-                                    }elseif($difCad > 1 && $difCad < 5){
-                                        echo "<td><b class='bg-warning' style='color: #000000;'>$fecha2</b></td>";
-                                    }elseif($difCad > 5){
-                                        echo "<td><b class='bg-success' style='color: #000000;'>$fecha2</b></td>";
+                                        echo "<td><b class='bg-danger' style='color: #000000;'> $fecha2 </b></td>";
+                                    }elseif($pr->mesCad < $mes){
+                                        echo "<td><b class='bg-danger' style='color: #000000;'> $fecha2 Caducado</b></td>";
+                                    }elseif($difCad >= 1 && $difCad <= 5){
+                                        echo "<td><b class='bg-warning' style='color: #000000;'> $fecha2 </b></td>";
+                                    }elseif($difCad >= 6){
+                                        echo "<td><b class='bg-success' style='color: #000000;'> $fecha2 </b></td>";
+                                    }else{
+                                        echo "<td><b>$fecha2</b></td>";
                                     }
                                 }
 

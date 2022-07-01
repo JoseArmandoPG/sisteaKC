@@ -9,9 +9,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">                        
-                    <img src ="{{asset('archivos/'.$pr->foto)}}" class="col-md-5 col-sm-5" style="max-width:275px; width:100%; float:left;">
-                    <div class="row">
+                <div class="container-fluid">
+                    <img src ="{{asset('archivos/'.$pr->foto)}}" class="col-md-12 col-sm-12" style="max-width:275px; width:100%;  margin: auto; display: block;">
+                    <!-- <div class="row">
                         <div class="col-md-12">
                             <table class="table" width="100%">
                                 <thead>
@@ -104,7 +104,173 @@
                                 </thead>
                             </table>
                         </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-4"  style="text-align: left;">
+                            <p>
+                                <b class="b_title">Codigo: </b>
+                                <b class="b_subtitle">{{$pr->codigo}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Producto: </b>
+                                <b class="b_subtitle">{{$pr->producto}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Modelo: </b>
+                                <b class="b_subtitle">{{$pr->modelo}}</b>
+                            </p>
+                        </div>
                     </div>
+                    <p></p><hr style="width:430px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Unidad: </b>
+                                <b class="b_subtitle">{{$pr->unidad}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Stock: </b>
+                                <b class="b_subtitle">{{$pr->stock}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Precio: </b>
+                                <b class="b_subtitle">$ {{$english_format_number=number_format($pr->precio)}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:430px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Importe: </b>
+                                <b class="b_subtitle">$ {{$english_format_number=number_format($pr->importe)}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Iva: </b>
+                                <b class="b_subtitle">$ {{$english_format_number=number_format($pr->iva)}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Total: </b>
+                                <b class="b_subtitle">$ {{$english_format_number=number_format($pr->total)}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Precio Alterno: </b>
+                                <b class="b_subtitle">$ {{$english_format_number=number_format($pr->precioAlterno)}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Caducidad: </b>
+                                @php
+                                    $campo3 = $pr->fCaducidad;
+                                    $date3 = date_create($campo3);
+                                    $fecha3 = date_format($date3, 'd-m-y');
+                                @endphp
+                                <b class="b_subtitle">{{$fecha3}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Ultimo Movimiento: </b>
+                                @php
+                                    $campo4 = $pr->updated_at;
+                                    $date4 = date_create($campo4);
+                                    $fecha4 = date_format($date4, 'd-m-y');
+                                @endphp
+                                <b class="b_subtitle">{{$fecha4}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Status: </b>
+                                <b class="b_subtitle">{{$pr->status}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Color: </b>
+                                <b class="b_subtitle">{{$pr->color}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Medida: </b>
+                                <b class="b_subtitle">{{$pr->medida}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-4" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Genero: </b>
+                                <b class="b_subtitle">{{$pr->genero}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <p>
+                                <b class="b_title">Talla: </b>
+                                <b class="b_subtitle">{{$pr->talla}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Linea: </b>
+                                <b class="b_subtitle">{{$pr->linea}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Categoria: </b>
+                                <b class="b_subtitle">{{$pr->categoria}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Ubicacion: </b>
+                                <b class="b_subtitle">{{$pr->ubicacion}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: right;">
+                            <p>
+                                <b class="b_title">Plataforma: </b>
+                                <b class="b_subtitle">{{$pr->plataforma}}</b>
+                            </p>
+                        </div>
+                        <div class="col-md-6" style="text-align: left;">
+                            <p>
+                                <b class="b_title">Marca: </b>
+                                <b class="b_subtitle">{{$pr->marca}}</b>
+                            </p>
+                        </div>
+                    </div>
+                    <p></p><hr style="width:700px; margin: 0;"><p></p>
                 </div>
             </div>
             <div class="modal-footer">

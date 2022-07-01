@@ -164,12 +164,13 @@ class productoController extends Controller
         /** FECHA**/
         date_default_timezone_set('America/Mexico_City');
         $fecha = date("d-m-Y");
+        // $fechaA = date("d-m-Y");
         $fechaHoy = date("Y-m-d");
         $hora = date("H:i:s");
         $fechaHoraL = date('d-m-Y H:i:s', time());
 
         $mes = date("m", strtotime($fecha));
-        return view('sistema.productos.reporteProductos')->with('productos',$productos)->with('mes',$mes)->with('fechaHoy',$fechaHoy);
+        return view('sistema.productos.reporteProductos')->with('productos',$productos)->with('mes',$mes)->with('fechaHoy',$fechaHoy)->with('fechaHoraL',$fechaHoraL);
     }
 
     public function eliminaProducto($idPro){

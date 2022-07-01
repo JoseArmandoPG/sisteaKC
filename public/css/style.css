@@ -726,6 +726,12 @@ h6.h1 {
   padding: 15px 45px;
   text-align: left;
 }
+.b_title{
+  color: #000 !important;
+}
+.b_subtitle{
+  color: #5e5e5e !important;
+}
 .footer > p a {
   color: #4680ff;
 }
@@ -870,6 +876,7 @@ h6.h1 {
   background: #26dad2 !important;
   color: #ffffff;
   fill: #26dad2;
+  border-radius: 5px;
 }
 .bg-info {
   background: #62d1f3 !important;
@@ -880,11 +887,13 @@ h6.h1 {
   background: #fc6180 !important;
   color: #ffffff;
   fill: #fc6180;
+  border-radius: 5px;
 }
 .bg-warning {
   background: #ffb64d !important;
   color: #ffffff;
   fill: #ffb64d;
+  border-radius: 5px;
 }
 .bg-pink {
   background: #e6a1f2 !important;
