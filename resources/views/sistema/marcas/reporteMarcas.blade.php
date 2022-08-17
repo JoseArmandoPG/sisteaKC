@@ -17,12 +17,18 @@
                             <th><b>#</b></th>
                             <th><b>Marca</b></th>
                             <th><b>Operaciones</b></th>
+                            @php
+                                $number = 0;
+                            @endphp
                             @foreach($marcas as $ma)
+                            @php
+                                $number++;
+                            @endphp
                         </tr>
                     </thead>
                     <tbody class="contenidobusqueda">
                         <tr>
-                            <td>{{$ma->idMarca}}</td>
+                            <td>{{$number}}</td>
                             <td>{{$ma->marca}}</td>
                             <td>
                                 @if($ma->deleted_at =="")

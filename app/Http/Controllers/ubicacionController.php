@@ -39,7 +39,7 @@ class ubicacionController extends Controller
     public function reporteUbicacion(){
         $ubicaciones=\DB::select("SELECT idUb,ubicacion,deleted_at
         FROM ubicaciones
-        ORDER BY idUb ASC");
+        ORDER BY ubicacion ASC");
         return view('sistema.ubicaciones.reporteUbicaciones')->with('ubicaciones',$ubicaciones);
     }
 

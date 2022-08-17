@@ -120,13 +120,13 @@
         <!-- column -->
     </div>
 
-    <div class="row bg-white m-l-0 m-r-0 box-shadow ">
-        <!-- column -->
+    <!-- <div class="row bg-white m-l-0 m-r-0 box-shadow ">
+        column
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">Extra Area Chart</h4>
-                    <div id="extra-area-chart"></div> -->
+                    <h4 class="card-title">Extra Area Chart</h4>
+                    <div id="extra-area-chart"></div>
                     <h4 class="card-title">Productos menos Vendidos</h4>
                     <div id="main2" style="width:100%; height:300px"></div>
                     @php
@@ -148,9 +148,9 @@
                 </div>
             </div>
         </div>
-        <!-- column -->
+        column
 
-        <!-- column -->
+        column
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body browser">
@@ -181,8 +181,8 @@
                 </div>
             </div>
         </div>
-        <!-- column -->
-    </div>
+        column
+    </div> -->
 
     <div class="row">
 		<div class="col-lg-3">

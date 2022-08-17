@@ -13,6 +13,8 @@ use App\marcas;
 use App\bitacoras;
 use App\DB;
 use Session;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class productoController extends Controller
 {
@@ -159,7 +161,7 @@ class productoController extends Controller
         INNER JOIN ubicaciones AS u ON p.idUb = u.idUb
         INNER JOIN plataformas AS pl ON p.idPla = pl.idPla
         INNER JOIN marcas AS m ON p.idMarca = m.idMarca
-        ORDER BY p.idPro ASC");
+        ORDER BY p.idPro DESC");
         
         /** FECHA**/
         date_default_timezone_set('America/Mexico_City');
@@ -371,5 +373,10 @@ class productoController extends Controller
             WHERE p.codigo LIKE '%%'");
         }
 		return view ('sistema.productos.busqueda')->with('productos',$productos);
+    }
+
+    public function exportar(){
+        //return Excel::download(new ProductsExport, 'productos.xlsx');
+        return Excel::download(new ProductsExport, 'productos.xlsx');
     }
 }

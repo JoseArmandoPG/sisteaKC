@@ -109,9 +109,6 @@ class ventaController extends Controller
         $linea          = $request->linea;
         $status         = $request->status;
 
-        $this->validate($request,[
-			'descripcion'   =>'required|string',
-		]);
 
         if($uVenta == ""){
             $fec = $fechaHoraL;
@@ -172,7 +169,7 @@ class ventaController extends Controller
         INNER JOIN ventas AS v ON b.idVenta = v.idVenta
         INNER JOIN productos AS p ON v.idPro = p.idPro
         INNER JOIN usuarios AS u ON b.idUsu = u.idUsu
-        ORDER BY b.idBV ASC");
+        ORDER BY b.idBV DESC");
         return view('sistema.ventas.reporteVentas')->with('historicos',$historicos);
     }
 }

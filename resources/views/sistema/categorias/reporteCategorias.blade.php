@@ -17,12 +17,18 @@
                             <th><b>#</b></th>
                             <th><b>Categoria</b></th>
                             <th><b>Operaciones</b></th>
+                            @php
+                                $number = 0;
+                            @endphp
                             @foreach($categorias as $ca)
+                            @php
+                                $number++;
+                            @endphp
                         </tr>
                     </thead>
                     <tbody class="contenidobusqueda">
                         <tr>
-                            <td>{{$ca->idCat}}</td>
+                            <td>{{$number}}</td>
                             <td>{{$ca->categoria}}</td>
                             <td>
                                 @if($ca->deleted_at =="")

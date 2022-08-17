@@ -39,7 +39,7 @@ class plataformaController extends Controller
     public function reportePlataforma(){
         $plataformas=\DB::select("SELECT idPla,plataforma,deleted_at
         FROM plataformas
-        ORDER BY idPla ASC");
+        ORDER BY plataforma ASC");
         return view('sistema.plataformas.reportePlataformas')->with('plataformas',$plataformas);
     }
 

@@ -84,6 +84,7 @@ Route::get('/seeProducto/{idPro}','productoController@seeProducto')->name('seePr
 Route::POST('/editaProducto','productoController@editaProducto')->name('editaProducto');
 Route::POST('/buscaProducto','productoController@buscaProducto')->name('buscaProducto');
 Route::get('/busqueda','productoController@busqueda')->name('busqueda');
+Route::get('/exportar','productoController@exportar')->name('exportar');
 
 /** Ventas **/
 Route::get('/venta','ventaController@venta');

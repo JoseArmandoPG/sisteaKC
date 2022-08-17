@@ -17,12 +17,18 @@
                             <th><b>#</b></th>
                             <th><b>Plataforma</b></th>
                             <th><b>Operaciones</b></th>
+                            @php
+                                $number = 0;
+                            @endphp
                             @foreach($plataformas as $pl)
+                            @php
+                                $number++;
+                            @endphp
                         </tr>
                     </thead>
                     <tbody class="contenidobusqueda">
                         <tr>
-                            <td>{{$pl->idPla}}</td>
+                            <td>{{$number}}</td>
                             <td>{{$pl->plataforma}}</td>
                             <td>
                                 @if($pl->deleted_at =="")

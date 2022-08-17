@@ -12,7 +12,8 @@
                 </div>
             </div>
             <div class="table-responsive m-t-40">
-                <b>Fecha y Hora Actual:</b> {{$fechaHoraL}} <p></p>
+                <b>Fecha y Hora Actual:</b> {{$fechaHoraL}}
+                <a href="{{URL::action('productoController@exportar')}}" class="btn btn-success" style="float:right;" title="Exportar Excel"><i class="fa fa-file-excel-o"></i></a><br><br><br>
                 <table  class="table table-hover">
                     <thead style="background-color: rgba(255, 98, 0, 0.45);">
                         <tr>

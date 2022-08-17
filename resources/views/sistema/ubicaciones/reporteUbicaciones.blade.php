@@ -17,12 +17,18 @@
                             <th><b>#</b></th>
                             <th><b>Ubicacion</b></th>
                             <th><b>Operaciones</b></th>
+                            @php
+                                $number = 0;
+                            @endphp
                             @foreach($ubicaciones as $ub)
+                            @php
+                                $number++;
+                            @endphp
                         </tr>
                     </thead>
                     <tbody class="contenidobusqueda">
                         <tr>
-                            <td>{{$ub->idUb}}</td>
+                            <td>{{$number}}</td>
                             <td>{{$ub->ubicacion}}</td>
                             <td>
                                 @if($ub->deleted_at =="")

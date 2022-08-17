@@ -59,7 +59,7 @@
                             <td>{{$pr->plataforma}}</td>
                             <td>{{$pr->stock}}</td>
                             
-                            <td>
+                            <!-- <td>
                                 <a href="#seeProducto{{$pr->idPro}}" data-toggle="modal" title="Visualizar">
                                     <i class="fa fa-eye fa-lg fa-fw" title="Inhabilitar"></i>
                                 </a>
@@ -80,7 +80,7 @@
                                         <i class="fa fa-times fa-lg fa-fw" title='Eliminar'></i>
                                     </a>
                                 @endif
-                            </td>
+                            </td> -->
                             @else
                             <p>El Producto no Existe</p>
                             @endif
